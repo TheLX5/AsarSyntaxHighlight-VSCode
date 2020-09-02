@@ -18,5 +18,8 @@ Asar syntax highlight for Visual Studio Code
 ## Previews
 Check the `samples` folder contents for some live previews of the highlighter.
 
+## Extra info
+You can check which scopes are affecting the text in the file by using `Developer: Inspect Editior Tokens and Scopes` in the command palette in VS Code.
+
 ## Bugs
 See the [current issues](https://github.com/TheLX5/AsarSyntaxHighlight-VSCode/issues) in order to check what's missing or doesn't work.
