@@ -2,7 +2,7 @@
 	"name": "asarsyntaxhighlighter",
 	"displayName": "AsarSyntaxHighlighter",
 	"description": "",
-	"version": "0.1",
+	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.48.0"
 	},
@@ -24,7 +24,9 @@
 		"languages": [
 			{
 				"id": "assembly",
-				"extensions": [".asm"],
+				"extensions": [
+					".asm"
+				],
 				"configuration": "./language-configuration.json"
 			}
 		]

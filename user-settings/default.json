@@ -157,14 +157,14 @@
             {
                 "scope": "keyword.asar.define",
                 "settings": {
-                    "foreground": "#da65c6"
+                    "foreground": "#e26ecf"
                 }
             },
             {
                 "name": "Asar assignment operators",
                 "scope": ["keyword.asar.operator.assignment"],
                 "settings": {
-                    "foreground": "#cb43cf"
+                    "foreground": "#c52764"
                     }
             },
 

@@ -12,6 +12,7 @@
 	<key>patterns</key>
 	<array>
 
+
 		<dict>
 			<key>comment</key>
 			<string>65c816 Mnemonics Status</string>
@@ -73,7 +74,6 @@
 			</dict>
 		</dict>
 
-		
 
 	</array>
 	<key>scopeName</key>

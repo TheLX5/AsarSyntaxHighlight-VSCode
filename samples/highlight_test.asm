@@ -192,10 +192,8 @@ dl label, slabel    ; Workaround
 ; Neither start a label with a number
 
 jsr 0label          ; Bug
-jsr .0sublabel      ; Bug
 
 jsr _0label         ; Possible workaround
-jsr ._0label        ; Possible workaround
 
 ;################################################
 ;# 65c816 MNEMONICS
