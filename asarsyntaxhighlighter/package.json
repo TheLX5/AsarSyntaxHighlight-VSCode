@@ -1,0 +1,32 @@
+{
+	"name": "asarsyntaxhighlighter",
+	"displayName": "AsarSyntaxHighlighter",
+	"description": "",
+	"version": "0.1",
+	"engines": {
+		"vscode": "^1.48.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"contributes": {
+		"grammars": [
+			{
+				"language": "assembly",
+				"scopeName": "source.asar",
+				"path": "./syntaxes/asar.tmLanguage"
+			},
+			{
+				"scopeName": "source.asm.65c816",
+				"path": "./syntaxes/65c816.tmLanguage"
+			}
+		],
+		"languages": [
+			{
+				"id": "assembly",
+				"extensions": [".asm"],
+				"configuration": "./language-configuration.json"
+			}
+		]
+	}
+}

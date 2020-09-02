@@ -1,0 +1,354 @@
+{
+    "editor.tokenColorCustomizations":
+    {
+        "textMateRules": [
+            {
+                "name": "Asar comments",
+                "scope": ["comment.asar.line"],
+                "settings": {
+                    "foreground": "#78a178"
+                    }
+            },
+            {
+                "name": "Asar strings",
+                "scope": ["string.asar"],
+                "settings": {
+                    "foreground": "#b3733f"
+                    }
+            },
+
+
+            {
+                "name": "65c816 Mnemonics",
+                "scope": ["keyword.asar.mnemonics.65c816"],
+                "settings": {
+                    "foreground": "#25afff"
+                    }
+            },
+            {
+                "name": "65c816 Mnemonics - Length",
+                "scope": ["keyword.asar.mnemonics.65c816.length"],
+                "settings": {
+                    "foreground": "#567dff"
+                    }
+            },
+            {
+                "name": "65c816 Mnemonics - Status",
+                "scope": ["keyword.asar.mnemonics.65c816.return"],
+                "settings": {
+                    "foreground": "#bde96d"
+                    }
+            },
+            {
+                "name": "65c816 Mnemonics - Status (REP/SEP)",
+                "scope": ["keyword.asar.mnemonics.65c816.status.repsep"],
+                "settings": {
+                    "foreground": "#ca74fc"
+                    }
+            },
+            {
+                "name": "65c816 Mnemonics - Indexes",
+                "scope": ["keyword.asar.indexes"],
+                "settings": {
+                    "foreground": "#567dff"
+                    }
+            },
+            {
+                "name": "65c816 Mnemonics - Breakpoints",
+                "scope": ["keyword.asar.mnemonics.65c816.breakpoint"],
+                "settings": {
+                    "foreground": "#fa4d4d"
+                    }
+            },
+            {
+                "name": "65c816 Mnemonics - Stack operations",
+                "scope": ["keyword.asar.mnemonics.65c816.stack"],
+                "settings": {
+                    "foreground": "#25db6b"
+                    }
+            },
+
+
+
+            
+            {
+                "name": "Asar constants",
+                "scope": ["constant.asar.numeric"],
+                "settings": {
+                    "foreground": "#ffb617"
+                    }
+            },
+            {
+                "name": "Asar decimal constant",
+                "scope": ["constant.asar.numeric.decvalue"],
+                "settings": {
+                    "foreground": "#6bc4ff"
+                    }
+            },
+            {
+                "name": "Asar binary constant",
+                "scope": ["constant.asar.numeric.binvalue"],
+                "settings": {
+                    "foreground": "#53fd44"
+                    }
+            },
+
+
+
+
+            {
+                "name": "Asar binary directives",
+                "scope": "keyword.asar.binary",
+                "settings": {
+                    "foreground": "#25afff",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "name": "Asar binary raw data",
+                "scope": "keyword.asar.binary.raw",
+                "settings": {
+                    "foreground": "#25afff",
+                    "fontStyle": ""
+                }
+            },
+            {
+                "name": "Asar include source",
+                "scope": "keyword.asar.include",
+                "settings": {
+                    "foreground": "#25afff",
+                    "fontStyle": "italic"
+                }
+            },
+            
+
+            
+            {
+                "scope": "label.asar.label",
+                "settings": {
+                    "foreground": "#e2afff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "label.asar.label.reference",
+                "settings": {
+                    "foreground": "#e2afff",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "label.asar.sublabel",
+                "settings": {
+                    "foreground": "#8173ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "label.asar.sublabel.reference",
+                "settings": {
+                    "foreground": "#8173ff",
+                    "fontStyle": "italic"
+                }
+            },
+
+
+
+            {
+                "scope": "keyword.asar.define",
+                "settings": {
+                    "foreground": "#da65c6"
+                }
+            },
+            {
+                "name": "Asar assignment operators",
+                "scope": ["keyword.asar.operator.assignment"],
+                "settings": {
+                    "foreground": "#cb43cf"
+                    }
+            },
+
+
+
+            
+
+            {
+                "name": "Asar operators",
+                "scope": ["keyword.asar.operator"],
+                "settings": {
+                    "foreground": "#cfc1c8"
+                    }
+            },
+            {
+                "name": "Asar brackets",
+                "scope": ["keyword.asar.operator.brackets"],
+                "settings": {
+                    "foreground": "#32faad"
+                    }
+            },
+
+
+
+
+            
+            {
+                "scope": "keyword.asar.conditionals",
+                "settings": {
+                    "foreground": "#8e6eff",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "name": "Asar logical operators",
+                "scope": ["keyword.asar.operator.logical"],
+                "settings": {
+                    "foreground": "#8e6eff"
+                    }
+            },
+
+
+
+            
+
+
+            {
+                "scope": "keyword.asar.macro",
+                "settings": {
+                    "foreground": "#25afff"
+                }
+            },
+            {
+                "scope": "keyword.asar.macro.name",
+                "settings": {
+                    "foreground": "#6fe793",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "keyword.asar.macro.args.usage",
+                "settings": {
+                    "foreground": "#bc69d1",
+                    "fontStyle": "italic"
+                }
+            },
+
+
+
+
+            {
+                "scope": "keyword.asar.struct",
+                "settings": {
+                    "foreground": "#25afff"
+                }
+            },
+
+
+
+
+            {
+                "scope": "keyword.asar.namespace",
+                "settings": {
+                    "foreground": "#8a74db"
+                }
+            },
+
+
+
+            
+            {
+                "scope": "keyword.asar.text",
+                "settings": {
+                    "foreground": "#d7f140",
+                    "fontStyle": "italic bold"
+                }
+            },
+            {
+                "scope": "keyword.asar.text.functions",
+                "settings": {
+                    "foreground": "#40c757",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "keyword.asar.text.options",
+                "settings": {
+                    "foreground": "#40c7c7",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "keyword.asar.text.error",
+                "settings": {
+                    "foreground": "#f8754d",
+                    "fontStyle": "italic"
+                }
+            },
+            
+
+            {
+                "scope": "keyword.asar.functions",
+                "settings": {
+                    "foreground": "#cfe959",
+                    "fontStyle": "italic"
+                }
+            },
+
+            
+
+            {
+                "scope": "keyword.asar.freespace",
+                "settings": {
+                    "foreground": "#25ffc8",
+                    "fontStyle": "italic"
+                }
+            },
+
+            
+            {
+                "scope": "keyword.asar.programcounter",
+                "settings": {
+                    "foreground": "#4add76"
+                }
+            },
+
+
+
+            {
+                "scope": "keyword.asar.mapping",
+                "settings": {
+                    "foreground": "#f0ee6a",
+                    "fontStyle": "italic bold"
+                }
+            },
+            {
+                "scope": "keyword.asar.arch",
+                "settings": {
+                    "foreground": "#648dff",
+                    "fontStyle": "italic bold"
+                }
+            },
+            {
+                "scope": "keyword.asar.compatibility",
+                "settings": {
+                    "foreground": "#7eff64",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "keyword.asar.checks",
+                "settings": {
+                    "foreground": "#ffe364",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "keyword.asar.warnings",
+                "settings": {
+                    "foreground": "#ff6464",
+                    "fontStyle": "italic bold"
+                }
+            }
+  
+        ]
+    }
+}

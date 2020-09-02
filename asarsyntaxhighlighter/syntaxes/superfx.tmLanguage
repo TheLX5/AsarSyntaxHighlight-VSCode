@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>asm</string>
+		<string>inc</string>
+	</array>
+	<key>name</key>
+	<string>GSU/Super FX Assembly</string>
+	<key>patterns</key>
+	<array>
+    
+	</array>
+	<key>scopeName</key>
+	<string>source.gsu</string>
+</dict>
+</plist>

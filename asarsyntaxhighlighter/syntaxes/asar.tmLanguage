@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>asm</string>
+		<string>inc</string>
+	</array>
+
+	<key>name</key>
+	<string>Asar syntax</string>
+	<key>patterns</key>
+	<array>
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Comment</string>
+			<key>name</key>
+			<string>comment.asar.line</string>
+			<key>match</key>
+			<string>;(.)*</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>String</string>
+			<key>match</key>
+			<string>"[^"]*"</string>
+			<key>name</key>
+			<string>string.asar.quoted.double</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>String</string>
+			<key>match</key>
+			<string>'[^'']*'</string>
+			<key>name</key>
+			<string>string.asar.quoted.single</string>
+		</dict>
+
+
+		<dict>
+			<key>comment</key>
+			<string>Command Seperator</string>
+			<key>name</key>
+			<string>keyword.asar.command.concatenate</string>
+			<key>match</key>
+			<string>[\s]:[\s]</string>
+		</dict>
+
+
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Hex Value</string>
+			<key>name</key>
+			<string>constant.asar.numeric.hexvalue</string>
+			<key>match</key>
+			<string>\$[0-9a-fA-F]+\b</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Hex Value</string>
+			<key>name</key>
+			<string>constant.asar.numeric.decvalue</string>
+			<key>match</key>
+			<string>\b[0-9]+\b</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Hex Value</string>
+			<key>name</key>
+			<string>constant.asar.numeric.binvalue</string>
+			<key>match</key>
+			<string>%[01]+\b</string>
+		</dict>
+
+
+
+
+		
+		<dict>
+			<key>comment</key>
+			<string>Mnemonic Indexes</string>
+			<key>match</key>
+			<string>(?i)(?<=[^\s])\,(x|s|y)(\b)?</string>
+			<key>name</key>
+			<string>keyword.asar.indexes</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>asar Defines</string>
+			<key>name</key>
+			<string>keyword.asar.define</string>
+			<key>match</key>
+			<string>![a-zA-Z0-9_{}]+</string>
+		</dict>
+
+
+
+		
+
+
+		
+
+		<dict>
+			<key>comment</key>
+			<string>Asar binary raw data</string>
+			<key>name</key>
+			<string>keyword.asar.binary.raw</string>
+			<key>match</key>
+			<string>(?i)(\s*(db|dw|dl|dd)\s+)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar fill binary data</string>
+			<key>name</key>
+			<string>keyword.asar.binary.fill</string>
+			<key>match</key>
+			<string>(?i)(\s*(fillbyte|fillword|filllong|filldword|fill)\s+)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar pad binary data</string>
+			<key>name</key>
+			<string>keyword.asar.binary.pad</string>
+			<key>match</key>
+			<string>(?i)(\s*(padbyte|padword|padlong|paddword|pad)\s+)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar include binary data</string>
+			<key>name</key>
+			<string>keyword.asar.binary.incbin</string>
+			<key>match</key>
+			<string>(?i)(\s*(incbin)\s+)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar table binary data</string>
+			<key>name</key>
+			<string>keyword.asar.binary.table</string>
+			<key>match</key>
+			<string>(?i)(\s*(pulltable|cleartable|table|\,\s*(ltr|rtl))\s+)</string>
+		</dict>
+
+
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar include source</string>
+			<key>name</key>
+			<string>keyword.asar.include.options</string>
+			<key>match</key>
+			<string>(?i)(\s*(include|includefrom|includeonce)\s+)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar include source</string>
+			<key>name</key>
+			<string>keyword.asar.include.incsrc</string>
+			<key>match</key>
+			<string>(?i)(\s*(incsrc)\s+)</string>
+		</dict>
+
+
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar macro function</string>
+			<key>match</key>
+			<string>(?i)(\s*(\bmacro\b\s|%)\s*)((?![0-9])[a-zA-Z_0-9]+(?=(\(|\s)))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.macro</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.macro.name</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar macro declaration ending</string>
+			<key>name</key>
+			<string>keyword.asar.macro.end</string>
+			<key>match</key>
+			<string>(?i)^\s*(endmacro)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar macro arguments</string>
+			<key>name</key>
+			<string>keyword.asar.macro.args.usage</string>
+			<key>match</key>
+			<string><[a-zA-Z_0-9]+></string>
+		</dict>
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar bitwise operators</string>
+			<key>name</key>
+			<string>keyword.asar.operator.incbin</string>
+			<key>match</key>
+			<string>\s+(->)\s+</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar logical operators</string>
+			<key>name</key>
+			<string>keyword.asar.operator.logical</string>
+			<key>match</key>
+			<string>\s+(==|!=|>=|<=|>|<|&&|\|\|)\s+</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar bitwise operators</string>
+			<key>name</key>
+			<string>keyword.asar.operator.bitwise</string>
+			<key>match</key>
+			<string>(<<|>>|\||&|~|\^)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar brackets</string>
+			<key>name</key>
+			<string>keyword.asar.operator.brackets</string>
+			<key>match</key>
+			<string>(\(|\)|\[|\])</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar assignment operators</string>
+			<key>name</key>
+			<string>keyword.asar.operator.assignment</string>
+			<key>match</key>
+			<string>\s+(=|\?=|\+=|:=|#=)\s+</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar arithmetic operators</string>
+			<key>name</key>
+			<string>keyword.asar.operator.arithmetic</string>
+			<key>match</key>
+			<string>(\+|\-|\*|/|%)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar operators</string>
+			<key>name</key>
+			<string>keyword.asar.operator</string>
+			<key>match</key>
+			<string>(,|#|\\)</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar Label</string>
+			<key>name</key>
+			<string>label.asar.label</string>
+			<key>match</key>
+			<string>^[\s]*\?*?([a-zA-Z0-9_]*):</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar Sublabel</string>
+			<key>match</key>
+			<string>^[\s]*\??[\.]+([a-zA-Z0-9_]*)(:)?</string>
+			<key>name</key>
+			<string>label.asar.sublabel</string>
+		</dict>
+
+		
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar user defined functions</string>
+			<key>match</key>
+			<string>(?i)(\s*(function)\s*)((?![0-9])[a-zA-Z_0-9]+(?=(\(|\s)))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.functions.user</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.functions.user.name</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar read functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(read1|read2|read3|read4|canread1|canread2|canread3|canread4|canread)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.read</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar file functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(readfile1|readfile2|readfile3|readfile4|canreadfile1|canreadfile2|canreadfile3|canreadfile4|filesize|getfilestatus)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.file</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar math functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(sqrt|sin|cos|tan|asin|acos|atan|arcsin|arccos|arctan|log|log2|log10|safediv|min|max|clamp)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.math</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar conditional functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(select|not|equal|notequal|less|lessequal|greater|greaterequal)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.conditional</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar bitwise functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(and|or|nand|nor|xor)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.bitwise</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar bitwise functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(and|or|nand|nor|xor)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.bitwise</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar number functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(round|floor|ceil)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.number</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar define functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(defined)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.define</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar struct functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(sizeof|objectsize)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.struct</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar string functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(stringsequal|stringsequalnocase)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.string</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar convert functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(snestopc|pctosnes)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.convert</string>
+		</dict>
+
+
+		
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar mapping directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(lorom|hirom|sa1rom|exlorom|exhirom|fullsa1rom|norom)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mapping</string>
+		</dict>
+
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar architecture directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(arch)\b[\s]+\b(65816|spc700\-inline|spc700|superfx)</string>
+			<key>name</key>
+			<string>keyword.asar.arch</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar program counter directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(org|(base)\b\s*((?=(off))\b(off)\b)?|skip|warnpc|(bank)\b\s*(\b(noassume|auto))?|dpbase|(optimize\sdp)\b([\s]+\b(none|ram|always)\b)?|(optimize\saddress)\b([\s]+\b(default|ram|mirrors)\b)?|pushpc|pullpc|pushbase|pullbase)\b</string>
+			<key>name</key>
+			<string>keyword.asar.programcounter</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar warning directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(warnings\s+(push|pull|enable|disable))\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.warnings</string>
+		</dict>
+		
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar compatibility directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(warn\s+xkas\s+(on|off)|math\s+pri\s+(on|off)|math\s+round\s+(on|off)|namespace\s+nested\s+(on|off))\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.compatibility</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar text output directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(print)\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.text</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar text output functions</string>
+			<key>match</key>
+			<string>(?i)\s*\b(bin|hex|dec|double)(?=\(+)</string>
+			<key>name</key>
+			<string>keyword.asar.text.functions</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar text output options</string>
+			<key>match</key>
+			<string>(?i)\s*(pc|(reset\s+)?freespaceuse|(reset\s+)?bytes)\s*</string>
+			<key>name</key>
+			<string>keyword.asar.text.options</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar text output error/warnings</string>
+			<key>match</key>
+			<string>(?i)\s*(error|warn|assert)\s*</string>
+			<key>name</key>
+			<string>keyword.asar.text.error</string>
+		</dict>
+
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar freespace directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(freecode|freedata|freespace\b\s+(ram|noram)?)\b\s*((\,*\s*(align|cleaned|static)\s*)+)?</string>
+			<key>name</key>
+			<string>keyword.asar.freespace</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar extra freespace directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(autoclean|prot)\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.freespace.misc</string>
+		</dict>
+
+
+
+
+		
+		<dict>
+			<key>comment</key>
+			<string>Asar check directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(check\s+(title|bankcross\s+(on|off)))\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.checks</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar struct directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(struct|endstruct|extends)\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.struct</string>
+		</dict>
+
+
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar namespace directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(namespace(\s+off)?)\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.namespace</string>
+		</dict>
+
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar conditional function</string>
+			<key>match</key>
+			<string>(?i)\s*\b(if|while|else|elseif)\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.conditionals</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar end conditional function</string>
+			<key>match</key>
+			<string>(?i)\s*\b(endif)\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.conditionals.endif</string>
+		</dict>
+
+
+		<dict>
+			<key>include</key>
+			<string>source.asm.65c816</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>source.asm.spc700</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>source.asm.spc700inline</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>source.asm.gsu</string>
+		</dict>
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Label Reference</string>
+			<key>name</key>
+			<string>label.asar.label.reference</string>
+			<key>match</key>
+			<string>(\s*\?*?(?!\s*[0-9!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
+		</dict>
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar Sublabel Reference</string>
+			<key>name</key>
+			<string>label.asar.sublabel.reference</string>
+			<key>match</key>
+			<string>(\s*\?*?[\.]+(?!\s*[0-9!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
+		</dict>
+
+
+
+	</array>
+	<key>scopeName</key>
+	<string>source.asar</string>
+</dict>
+</plist>
