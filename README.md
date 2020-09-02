@@ -12,6 +12,7 @@ Asar syntax highlight for Visual Studio Code
 - (Optional) Copy the contents of `default.json` in `user-settings` to your `settings.json` file.
 
 `extensions` folder path in Windows: `%USERPROFILE%\.vscode\extensions`
+
 `settings.json` path in Windows: `%APPDATA%\Code\User\settings.json`
 
 ## Previews
