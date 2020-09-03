@@ -225,6 +225,19 @@
                 }
             },
             {
+                "scope": "keyword.asar.macro.call",
+                "settings": {
+                    "foreground": "#25afff"
+                }
+            },
+            {
+                "scope": "keyword.asar.macro.call.name",
+                "settings": {
+                    "foreground": "#6fe793",
+                    "fontStyle": "italic"
+                }
+            },
+            {
                 "scope": "keyword.asar.macro.args.usage",
                 "settings": {
                     "foreground": "#bc69d1",

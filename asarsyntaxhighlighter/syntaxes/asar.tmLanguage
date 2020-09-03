@@ -184,7 +184,7 @@
 			<key>comment</key>
 			<string>Asar macro function</string>
 			<key>match</key>
-			<string>(?i)(\s*(\bmacro\b\s|%)\s*)((?![0-9])[a-zA-Z_0-9]+(?=(\(|\s)))</string>
+			<string>(?i)(\s*\b(?!%)(macro)\b\s+)((?![0-9])[a-zA-Z_0-9]+(?=(\(|\s)))</string>
 			<key>captures</key>
 			<dict>
 				<key>2</key>
@@ -196,6 +196,25 @@
 				<dict>
 					<key>name</key>
 					<string>keyword.asar.macro.name</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar macro function</string>
+			<key>match</key>
+			<string>(?i)(\s*(%)\s*)((?![0-9])[a-zA-Z_0-9]+(?=(\(|\s)))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.macro.call</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.macro.call.name</string>
 				</dict>
 			</dict>
 		</dict>
@@ -611,7 +630,7 @@
 			<key>name</key>
 			<string>label.asar.label.reference</string>
 			<key>match</key>
-			<string>(\s*\?*?(?!\s*[0-9!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
+			<string>(?i)(?<=\s*(LDA|LDX|LDY|STA|STX|STY|STZ|INC|DEC|ADC|SBC|CMP|CPX|CPY|BIT|BRA|BRL|BEQ|BNE|BCS|BCC|BMI|BPL|BVC|BVS|AND|ORA|EOR|ASL|LSR|ROL|ROR|TSB|TRB|MVN|MVP|JSR|JMP|JSL|JML|PEA|PEI|PER|db|dw|dl|dd|if|elseif|while|autoclean|prot|org|base|skip|warnpc|bank|dpbase|struct|extends|[:,#=!<>&|\\/+\-*/()\[\]])(\.b|\.l.|\.w)?\s*)(\?*?(?!\s*[0-9!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
 		</dict>
 
 
@@ -631,3 +650,4 @@
 	<string>source.asar</string>
 </dict>
 </plist>
+
