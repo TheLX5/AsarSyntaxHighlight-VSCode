@@ -9,7 +9,7 @@ Asar syntax highlight for Visual Studio Code
 
 ## Installation
 - Copy the `asarsyntaxhighlighter` folder to your `extensions` folder for VSCode
-- (Optional) Copy the contents of `default.json` in `user-settings` to your `settings.json` file.
+- (Optional) Copy the contents of any of the `.json` files in `user-settings` to your `settings.json` file.
 
 `extensions` folder path in Windows: `%USERPROFILE%\.vscode\extensions`
 
