@@ -43,7 +43,7 @@
 			<key>comment</key>
 			<string>65c816 Mnemonics Stack Operations</string>
 			<key>match</key>
-			<string>(?i)\s*\b(PEA|PEI|PER|PHA|PHB|PHD|PHK|PHP|PHX|PHY|PLA|PLB|PLD|PLP|PLX|PLY)</string>
+			<string>(?i)\s*\b(PEA(\.w)?|PEI|PER(\.w)?|PHA|PHB|PHD|PHK|PHP|PHX|PHY|PLA|PLB|PLD|PLP|PLX|PLY)</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.65c816.stack</string>
 		</dict>
@@ -59,9 +59,45 @@
 		
 		<dict>
 			<key>comment</key>
+			<string>65c816 Mnemonics Branches</string>
+			<key>match</key>
+			<string>(?i)\s*\b(BCC|BCS|BEQ|BIT|BMI|BNE|BPL|BRA|BRL|BVC|BVS)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.65c816.branch</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>65c816 Mnemonics Branches</string>
+			<key>match</key>
+			<string>(?i)\s*\b(JMP|JML|JSR|JSL)(\.b|\.w|\.l)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.65c816.jump</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.65c816.length</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>65c816 Mnemonics Branches</string>
+			<key>match</key>
+			<string>(?i)\s*\b(MVN|MVP)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.65c816.block</string>
+		</dict>
+
+	
+		<dict>
+			<key>comment</key>
 			<string>65c816 Mnemonics</string>
 			<key>match</key>
-			<string>(?i)\s*\b(ADC|AND|ASL|BCC|BCS|BEQ|BIT|BMI|BNE|BPL|BRA|BRL|BVC|BVS|CMP|CPX|CPY|DEC|DEX|DEY|EOR|INC|INX|INY|JMP|JML|JSR|JSL|LDA|LDX|LDY|LSR|MVN|MVP|NOP|ORA|PEA|PEI|PER|ROL|ROR|SBC|STA|STX|STY|STZ|TAX|TAY|TCD|TCS|TDC|TSC|TSX|TXA|TXS|TXY|TYA|TYX|TRB|TSB|WAI|XBA|XCE)(\.b|\.w|\.l)?\b</string>
+			<string>(?i)\s*\b(ADC|AND|ASL|CMP|CPX|CPY|DEC|DEX|DEY|EOR|INC|INX|INY|LDA|LDX|LDY|LSR|NOP|ORA|ROL|ROR|SBC|STA|STX|STY|STZ|TAX|TAY|TCD|TCS|TDC|TSC|TSX|TXA|TXS|TXY|TYA|TYX|TRB|TSB|WAI|XBA|XCE)(\.b|\.w|\.l)?\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.65c816</string>
 			<key>captures</key>

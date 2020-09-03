@@ -5,7 +5,6 @@
 ;# - Every mnemonic, directive and function is case-insensitive
 ;# - Scopes used for highlights are documented alongside each highlight
 ;# - Specific notes, missing highlights and limitations are stated in each highlight
-;# - Everything that isn't supported WILL be treated as a label reference
 
 
 ;################################################
@@ -87,7 +86,7 @@ $FE*%01         ; Multiplication
 $1000>>12       ; Bit shift right
 $F|%10000       ; OR
 $1F&8           ; AND
-5~              ; NOT
+~5              ; NOT
 %1110^%0001     ; XOR
 
 ; Logical operators
@@ -152,15 +151,12 @@ $1F&8           ; AND
 label:          ; Label declaration
 
 label           ; Invalid declaration.
-                ; It's treated as a reference.
 
 ; Sublabels
 ; Scope: label.asar.sublabel
 
 .sublabel       ; Sublabel declaration
 .sublabel:      ; Also accepts : at the end.
-                ; This one converts itself into a reference under special
-                ; circumstances.
 
 
 ; Label references
@@ -184,16 +180,10 @@ dl .sublabel,label
 
 ; Limitations
 
-; You can't concatenate commas and label references
+; You can't concatenate commas and label references, they may be converted to indexes
 
 dl label,slabel     ; Bug
 dl label, slabel    ; Workaround
-
-; Neither start a label with a number
-
-jsr 0label          ; Bug
-
-jsr _0label         ; Possible workaround
 
 ;################################################
 ;# 65c816 MNEMONICS
@@ -210,7 +200,7 @@ lda $000000
 lda ($00)
 lda [$00]
 
-; Mnemonic lenght and indexes are also supported for every opcode that supports them
+; Mnemonic length and indexes are also supported for every opcode that supports them
 
 ; Mnemonic length
 ; Scope: keyword.asar.mnemonics.65c816.length
@@ -242,21 +232,33 @@ INC : INX : INY
 DEC : DEX : DEY
 ADC : SBC
 CMP : CPX : CPY : BIT 
-BRA : BRL : BEQ : BNE : BCS : BCC : BMI : BPL : BVC : BVS
 AND : ORA : EOR
 ASL : LSR : ROL : ROR
 TSB : TRB
-MVN : MVP
 TAX : TAY : TXA : TYA : TXY : TYX : TCD : TDC : TSC : TSX : TXS
-JSR : JMP : JSL : JML
 NOP
 XBA : XCE
 WAI 
+
+; 65c816's branch mnemonics
+; Scope: keyword.asar.mnemonics.65c816.branch
+
+BRA : BRL : BEQ : BNE : BCS : BCC : BMI : BPL : BVC : BVS
+
+; 65c816's branch mnemonics
+; Scope: keyword.asar.mnemonics.65c816.jump
+
+JSR : JMP : JSL : JML
 
 ; 65c816's return mnemonics
 ; Scope: keyword.asar.mnemonics.65c816.return
 
 RTS : RTL : RTI 
+
+; 65c816's block move mnemonics
+; Scope: keyword.asar.mnemonics.65c816.block
+
+MVN : MVP
 
 ; 65c816's status modifier mnemonics
 ; Scope: keyword.asar.mnemonics.65c816.status
@@ -395,17 +397,24 @@ includeonce
 ;# MACROS
 
 
-; Macros
+; Macro declaration
 ; Scope: keyword.asar.macro
 
-; Macro's name
+; Macro declaration - Name
 ; Scope: keyword.asar.macro.name
 
-; Macro's end
+; Macro declaration ending
 ; Scope: keyword.asar.macro.end
 
-; Macro's argument usage
+; Macro argument usage
 ; Scope: keyword.asar.macro.args.usage
+
+; Calling a macro
+; Scope: keyword.asar.macro.call
+
+; Called macro's name
+; Scope: keyword.asar.macro.call.name
+
 
 macro macro()                   ; Creating a macro
 endmacro                        ; Finishing a macro
@@ -439,16 +448,6 @@ macroname                   ; Not possible
 macro name ()               ; Highlighted, but will not work
 
 %macro ()                   ; Highlighted, but will not work
-
-; Limitations
-
-; Like in label's references, you can't have labels starting with a number
-; Otherwise the highlighter goes wild
-
-macro 0macro()              ; Bug
-%0macro()                   ; Bug
-macro _0macro()             ; Possible workaround
-%_0macro()                  ; Possible workaround
 
 ;################################################
 ;# STRUCTS
