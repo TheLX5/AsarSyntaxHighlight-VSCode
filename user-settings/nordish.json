@@ -6,7 +6,7 @@
                 "name": "Asar comments",
                 "scope": ["comment.asar.line"],
                 "settings": {
-                    "foreground": "#4f596d"
+                    "foreground": "#5d637e"
                     }
             },
             {
@@ -29,21 +29,21 @@
                 "name": "65c816 Mnemonics - Length",
                 "scope": ["keyword.asar.mnemonics.65c816.length"],
                 "settings": {
-                    "foreground": "#81A1C1"
+                    "foreground": "#66809b"
                     }
             },
             {
                 "name": "65c816 Mnemonics - Status",
                 "scope": ["keyword.asar.mnemonics.65c816.return"],
                 "settings": {
-                    "foreground": "#bb75a9"
+                    "foreground": "#b888b8"
                     }
             },
             {
                 "name": "65c816 Mnemonics - Status (REP/SEP)",
                 "scope": ["keyword.asar.mnemonics.65c816.status.repsep"],
                 "settings": {
-                    "foreground": "#e0959a"
+                    "foreground": "#c57d83"
                     }
             },
             {
@@ -57,14 +57,14 @@
                 "name": "65c816 Mnemonics - Breakpoints",
                 "scope": ["keyword.asar.mnemonics.65c816.breakpoint"],
                 "settings": {
-                    "foreground": "#d47171"
+                    "foreground": "#e76767"
                     }
             },
             {
                 "name": "65c816 Mnemonics - Stack operations",
                 "scope": ["keyword.asar.mnemonics.65c816.stack"],
                 "settings": {
-                    "foreground": "#c6c783"
+                    "foreground": "#beb977"
                     }
             },
 
@@ -126,28 +126,28 @@
             {
                 "scope": "label.asar.label",
                 "settings": {
-                    "foreground": "#9b5c7c",
+                    "foreground": "#a3577d",
                     "fontStyle": "bold"
                 }
             },
             {
                 "scope": "label.asar.label.reference",
                 "settings": {
-                    "foreground": "#9b5c7c",
+                    "foreground": "#a3577d",
                     "fontStyle": "italic"
                 }
             },
             {
                 "scope": "label.asar.sublabel",
                 "settings": {
-                    "foreground": "#864d69",
+                    "foreground": "#7e4762",
                     "fontStyle": "bold"
                 }
             },
             {
                 "scope": "label.asar.sublabel.reference",
                 "settings": {
-                    "foreground": "#864d69",
+                    "foreground": "#7e4762",
                     "fontStyle": "italic"
                 }
             },
@@ -164,13 +164,13 @@
                 "name": "Asar assignment operators",
                 "scope": ["keyword.asar.operator.assignment"],
                 "settings": {
-                    "foreground": "#7993b1"
+                    "foreground": "#81A1C1"
                     }
             },
+ 
 
 
 
-            
 
             {
                 "name": "Asar operators",
@@ -187,14 +187,14 @@
                     }
             },
 
-
-
-
             
+
+
+
             {
                 "scope": "keyword.asar.conditionals",
                 "settings": {
-                    "foreground": "#81A1C1",
+                    "foreground": "#eeaf8a",
                     "fontStyle": "italic"
                 }
             },
@@ -208,9 +208,9 @@
 
 
 
+
+
             
-
-
             {
                 "scope": "keyword.asar.macro",
                 "settings": {
@@ -225,9 +225,22 @@
                 }
             },
             {
+                "scope": "keyword.asar.macro.call",
+                "settings": {
+                    "foreground": "#da9771"
+                }
+            },
+            {
+                "scope": "keyword.asar.macro.call.name",
+                "settings": {
+                    "foreground": "#da9771",
+                    "fontStyle": "italic"
+                }
+            },
+            {
                 "scope": "keyword.asar.macro.args.usage",
                 "settings": {
-                    "foreground": "#e6a857",
+                    "foreground": "#8abdb8",
                     "fontStyle": "italic"
                 }
             },
@@ -238,7 +251,7 @@
             {
                 "scope": "keyword.asar.struct",
                 "settings": {
-                    "foreground": "#273b47"
+                    "foreground": "#81A1C1"
                 }
             },
 
@@ -259,7 +272,7 @@
                 "scope": "keyword.asar.text",
                 "settings": {
                     "foreground": "#da9771",
-                    "fontStyle": "italic bold"
+                    "fontStyle": "bold"
                 }
             },
             {
@@ -348,7 +361,7 @@
                     "fontStyle": "italic bold"
                 }
             }
-
+    
         ]
     }
 }
