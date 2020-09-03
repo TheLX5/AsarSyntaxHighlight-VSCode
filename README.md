@@ -18,6 +18,8 @@ Asar syntax highlight for Visual Studio Code
 ## Previews
 Check the `samples` folder contents for some live previews of the highlighter.
 
+Some color settings have their own previews in `user-settings` folder's README.md file, you can check them out there.
+
 ## Extra info
 You can check which scopes are affecting the text in the file by using `Developer: Inspect Editior Tokens and Scopes` in the command palette in VS Code.
 
