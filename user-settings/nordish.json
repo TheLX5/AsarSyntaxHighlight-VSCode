@@ -20,28 +20,28 @@
 
             {
                 "name": "65c816 Mnemonics",
-                "scope": ["keyword.asar.mnemonics.65c816"],
+                "scope": ["keyword.asar.mnemonics"],
                 "settings": {
                     "foreground": "#81A1C1"
                     }
             },
             {
                 "name": "65c816 Mnemonics - Length",
-                "scope": ["keyword.asar.mnemonics.65c816.length"],
+                "scope": ["keyword.asar.mnemonics.length"],
                 "settings": {
                     "foreground": "#66809b"
                     }
             },
             {
                 "name": "65c816 Mnemonics - Status",
-                "scope": ["keyword.asar.mnemonics.65c816.return"],
+                "scope": ["keyword.asar.mnemonics.return"],
                 "settings": {
-                    "foreground": "#b888b8"
+                    "foreground": "#a579be"
                     }
             },
             {
                 "name": "65c816 Mnemonics - Status (REP/SEP)",
-                "scope": ["keyword.asar.mnemonics.65c816.status.repsep"],
+                "scope": ["keyword.asar.mnemonics.status.repsep"],
                 "settings": {
                     "foreground": "#c57d83"
                     }
@@ -55,14 +55,14 @@
             },
             {
                 "name": "65c816 Mnemonics - Breakpoints",
-                "scope": ["keyword.asar.mnemonics.65c816.breakpoint"],
+                "scope": ["keyword.asar.mnemonics.breakpoint"],
                 "settings": {
                     "foreground": "#e76767"
                     }
             },
             {
                 "name": "65c816 Mnemonics - Stack operations",
-                "scope": ["keyword.asar.mnemonics.65c816.stack"],
+                "scope": ["keyword.asar.mnemonics.stack"],
                 "settings": {
                     "foreground": "#beb977"
                     }
@@ -70,7 +70,13 @@
 
 
 
-            
+            {
+                "name": "Asar address",
+                "scope": ["constant.asar.numeric.hex.addr"],
+                "settings": {
+                    "foreground": "#b3c28d"
+                    }
+            },
             {
                 "name": "Asar constants",
                 "scope": ["constant.asar.numeric"],
@@ -78,21 +84,6 @@
                     "foreground": "#D8DEE9"
                     }
             },
-            {
-                "name": "Asar decimal constant",
-                "scope": ["constant.asar.numeric.decvalue"],
-                "settings": {
-                    "foreground": "#D8DEE9"
-                    }
-            },
-            {
-                "name": "Asar binary constant",
-                "scope": ["constant.asar.numeric.binvalue"],
-                "settings": {
-                    "foreground": "#D8DEE9"
-                    }
-            },
-
 
 
 
@@ -126,28 +117,28 @@
             {
                 "scope": "label.asar.label",
                 "settings": {
-                    "foreground": "#a3577d",
+                    "foreground": "#b45f8a",
                     "fontStyle": "bold"
                 }
             },
             {
                 "scope": "label.asar.label.reference",
                 "settings": {
-                    "foreground": "#a3577d",
+                    "foreground": "#b45f8a",
                     "fontStyle": "italic"
                 }
             },
             {
                 "scope": "label.asar.sublabel",
                 "settings": {
-                    "foreground": "#7e4762",
+                    "foreground": "#91506f",
                     "fontStyle": "bold"
                 }
             },
             {
                 "scope": "label.asar.sublabel.reference",
                 "settings": {
-                    "foreground": "#7e4762",
+                    "foreground": "#91506f",
                     "fontStyle": "italic"
                 }
             },
@@ -167,8 +158,6 @@
                     "foreground": "#81A1C1"
                     }
             },
- 
-
 
 
 
@@ -189,8 +178,6 @@
 
             
 
-
-
             {
                 "scope": "keyword.asar.conditionals",
                 "settings": {
@@ -207,14 +194,11 @@
             },
 
 
-
-
-
             
             {
                 "scope": "keyword.asar.macro",
                 "settings": {
-                    "foreground": "#81A1C1"
+                    "foreground": "#b6625c"
                 }
             },
             {
@@ -257,7 +241,6 @@
 
 
 
-
             {
                 "scope": "keyword.asar.namespace",
                 "settings": {
@@ -267,7 +250,6 @@
 
 
 
-            
             {
                 "scope": "keyword.asar.text",
                 "settings": {
@@ -361,7 +343,6 @@
                     "fontStyle": "italic bold"
                 }
             }
-    
         ]
     }
 }
