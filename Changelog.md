@@ -8,7 +8,10 @@ Changes:
 * `INC` and `DEC` no longer treat their argument as label references if it's a single A, X or Y letter
 * Made possible to differentiate between values and addresses in most cases
 * Implemented the `rep` command
+
+Color schemes changes:
 * Made a new `default.json` file with a different color scheme
+* Included `nordish.json` from Underrout
 
 Scopes (changes & additions):
 * `constant.asar.numeric.hexvalue` -> `constant.asar.numeric.hex`
