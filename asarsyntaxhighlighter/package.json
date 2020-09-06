@@ -2,7 +2,7 @@
 	"name": "asarsyntaxhighlighter",
 	"displayName": "AsarSyntaxHighlighter",
 	"description": "",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.48.0"
 	},
@@ -17,9 +17,9 @@
 				"path": "./syntaxes/asar.tmLanguage"
 			},
 			{
-				"scopeName": "source.asm.65c816",
-				"path": "./syntaxes/65c816.tmLanguage"
-			}
+				"scopeName": "source.asm.mnemonics",
+				"path": "./syntaxes/mnemonics.tmLanguage"
+			},
 		],
 		"languages": [
 			{

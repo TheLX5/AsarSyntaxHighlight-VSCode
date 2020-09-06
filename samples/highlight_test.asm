@@ -5,20 +5,47 @@
 ;# - Every mnemonic, directive and function is case-insensitive
 ;# - Scopes used for highlights are documented alongside each highlight
 ;# - Specific notes, missing highlights and limitations are stated in each highlight
+;# - Some scopes have children scopes that you can watch by using the tool to watch scopes in VSCode
+;#   In the command palette  (Ctrl+Shift+P on Windows) write:
+;#   Developer: Inspect Editor Tokens and Scopes
 
 
 ;################################################
 ;# CONSTANTS
 
-; Hex values
-; Scope: constant.asar.numeric.hexvalue
+; Values and addresses are constants, the only way to differentiate them is by
+; checking if they're alone, after an asar directive or after any operator
+; Every Address/Value test under the hexadecimal section applies to Decimal and Binary as well
 
-$00
-$4302
-$FFFFFF
+; Hex constants
+; Scope: constant.asar.numeric.hex.value
+; Hex addresses
+; Scope: constant.asar.numeric.hex.addr
 
-; Decimal values
-; Scope: constant.asar.numeric.decvalue
+$00                 ; Value
+$4302               ; Value
+$FFFFFF             ; Value
+
+lda #$00            ; Value
+lda #$0000          ; Value
+lda $00             ; Address
+lda $0000           ; Address
+lda ($00)           ; Address
+lda #($00)          ; Value
+lda [$00]           ; Address
+!define = $00       ; Value
+if !define > $00    ; Value
+db $00              ; Value
+dl $000000,$0FF000  ; Values
+lda.b ($00+$00)     ; Address+Value
+lda ($00,s),y       ; Address
+bra $00             ; Value
+
+
+; Decimal constants
+; Scope: constant.asar.numeric.dec.value
+; Decimal constants
+; Scope: constant.asar.numeric.dec.addr
 
 0
 165
@@ -26,7 +53,9 @@ $FFFFFF
 000F                ; Invalid
 
 ; Binary values
-; Scope: constant.asar.numeric.binvalue
+; Scope: constant.asar.numeric.bin.value
+; Binary values
+; Scope: constant.asar.numeric.bin.addr
 
 %00010111
 %1111
@@ -151,18 +180,21 @@ $1F&8           ; AND
 label:          ; Label declaration
 
 label           ; Invalid declaration.
+                ; It's treated as a reference.
 
 ; Sublabels
 ; Scope: label.asar.sublabel
 
 .sublabel       ; Sublabel declaration
 .sublabel:      ; Also accepts : at the end.
+                ; This one converts itself into a reference under special
+                ; circumstances.
 
 
 ; Label references
 ; Scope: label.asar.label.reference
 
-lda label       ; This is a label reference, to spot labels without any issue.
+lda label       ; This is a label reference, useful to spot labels without any issue.
 jsl routine
 dw value
 lda #(label+4)>>8
@@ -175,12 +207,12 @@ jsr .subroutine
 dw .value
 lda #(.sublabel+4)>>8
 
-dl label,.sublabel
-dl .sublabel,label
+dl label,.sublabel, label,label, label
+dl .sublabel,label,.sublabel
 
 ; Limitations
 
-; You can't concatenate commas and label references, they may be converted to indexes
+; You can't concatenate commas and label references
 
 dl label,slabel     ; Bug
 dl label, slabel    ; Workaround
@@ -200,15 +232,16 @@ lda $000000
 lda ($00)
 lda [$00]
 
-; Mnemonic length and indexes are also supported for every opcode that supports them
+; Mnemonic lenght and indexes are also supported for every opcode that supports them
 
 ; Mnemonic length
-; Scope: keyword.asar.mnemonics.65c816.length
+; Scope: keyword.asar.mnemonics.length
 
 lda.b #%0001
 lda.w #$00
 lda.l 4823921
 lda.b !define
+lda.w #label+!define+.sublabel+$00
 
 ; Mnemonic index
 ; Scope: keyword.asar.indexes
@@ -224,70 +257,90 @@ lda ($00,x)
 lda [$00],y
 
 ; 65c816's mnemonics
-; Scope: keyword.asar.mnemonics.65c816
+; Scope: keyword.asar.mnemonics.accum
 
 LDA : LDX : LDY
 STA : STX : STY : STZ
+
+; 65c816's math mnemonics
+; Scope: keyword.asar.mnemonics.math
+
+ADC : SBC
 INC : INX : INY
 DEC : DEX : DEY
-ADC : SBC
-CMP : CPX : CPY : BIT 
+
+; 65c816's bitwise mnemonics
+; Scope: keyword.asar.mnemonics.bitwise
+
 AND : ORA : EOR
 ASL : LSR : ROL : ROR
 TSB : TRB
-TAX : TAY : TXA : TYA : TXY : TYX : TCD : TDC : TSC : TSX : TXS
-NOP
-XBA : XCE
-WAI 
+BIT 
+
+; 65c816's comparison mnemonics
+; Scope: keyword.asar.mnemonics.compare
+
+CMP : CPX : CPY
 
 ; 65c816's branch mnemonics
-; Scope: keyword.asar.mnemonics.65c816.branch
+; Scope: keyword.asar.mnemonics.branch
 
 BRA : BRL : BEQ : BNE : BCS : BCC : BMI : BPL : BVC : BVS
 
-; 65c816's branch mnemonics
-; Scope: keyword.asar.mnemonics.65c816.jump
+; 65c816's jump mnemonics
+; Scope: keyword.asar.mnemonics.jump
 
 JSR : JMP : JSL : JML
 
 ; 65c816's return mnemonics
-; Scope: keyword.asar.mnemonics.65c816.return
+; Scope: keyword.asar.mnemonics.return
 
 RTS : RTL : RTI 
 
-; 65c816's block move mnemonics
-; Scope: keyword.asar.mnemonics.65c816.block
-
-MVN : MVP
-
 ; 65c816's status modifier mnemonics
-; Scope: keyword.asar.mnemonics.65c816.status
+; Scope: keyword.asar.mnemonics.status
 
 CLC : CLD : CLI : CLV : SEC : SED : SEI
 
-; 65c816's status modifier mnemonics
-; Scope: keyword.asar.mnemonics.65c816.status.repsep
-
-REP : SEP
+REP # : SEP #           ; REP and SEP require # in order to work here
+                        ; It's a highlight thing.
 
 ; 65c816's stack manipulation mnemonics
-; Scope: keyword.asar.mnemonics.65c816.stack
+; Scope: keyword.asar.mnemonics.stack
 
 PHA : PHX : PHY : PHP : PHD : PHB : PHK
 PLA : PLX : PLY : PLP : PLD : PLB 
 PEA : PEI : PER
 
+; 65c816's transfer mnemonics
+; Scope: keyword.asar.mnemonics.transfer
+
+TAX : TAY : TXA : TYA : TXY : TYX : TCD : TDC : TSC : TSX : TXS
+
+; 65c816's no operation mnemonic
+; Scope: keyword.asar.mnemonics.nop
+
+NOP
+
+; 65c816's swap operation mnemonics
+; Scope: keyword.asar.mnemonics.swap
+
+XBA : XCE
+
+; 65c816's block move mnemonics
+; Scope: keyword.asar.mnemonics.block
+
+MVN : MVP
+
+; 65c816's wait for interrupt mnemonic
+; Scope: keyword.asar.mnemonics.wait
+
+WAI 
+
 ; 65c816's misc mnemonics, useful for breakpoints
-; Scope: keyword.asar.mnemonics.65c816.breakpoint
+; Scope: keyword.asar.mnemonics.breakpoint
 
 BRK : COP : WDM : STP
-
-; Notes:
-; INC and DEC accept "A" as a parameter, but this highlighter will not like that
-; Use just INC or DEC without the A
-
-INC A       ; It's treated as a label reference
-DEC A
 
 ;################################################
 ;# SPC700 MNEMONICS
@@ -397,24 +450,17 @@ includeonce
 ;# MACROS
 
 
-; Macro declaration
+; Macros
 ; Scope: keyword.asar.macro
 
-; Macro declaration - Name
+; Macro's name
 ; Scope: keyword.asar.macro.name
 
-; Macro declaration ending
+; Macro's end
 ; Scope: keyword.asar.macro.end
 
-; Macro argument usage
+; Macro's argument usage
 ; Scope: keyword.asar.macro.args.usage
-
-; Calling a macro
-; Scope: keyword.asar.macro.call
-
-; Called macro's name
-; Scope: keyword.asar.macro.call.name
-
 
 macro macro()                   ; Creating a macro
 endmacro                        ; Finishing a macro
@@ -428,6 +474,7 @@ macro macro(a, b, c)            ; Macro with arguments
     bra ?macrolabel
     dw <b><<2+8, %0001
 ?macrolabel:                    ; Macro labes are supported as well, same scope as the regular labels
+?macrolabel
 endmacro
 
 %macro($0000, label, !define)   ; Calling a macro with arguments will use their respective scopes
@@ -449,6 +496,16 @@ macro name ()               ; Highlighted, but will not work
 
 %macro ()                   ; Highlighted, but will not work
 
+; Limitations
+
+; Like in label's references, you can't have labels starting with a number
+; Otherwise the highlighter goes wild
+
+macro 0macro()              ; Bug
+%0macro()                   ; Bug
+macro _0macro()             ; Possible workaround
+%_0macro()                  ; Possible workaround
+
 ;################################################
 ;# STRUCTS
 
@@ -468,12 +525,23 @@ endstruct
 lda objectlist.posy.posx
 lda.w objectlist[0].posx.posy
 
+
+;################################################
+;# REPEAT
+
+; rep command
+; Scope: keyword.asar.repeat
+
+rep 10
+rep $10
+rep %10
+
 ;################################################
 ;# NAMESPACES
 
 ; Namespaces
 ; Scope: keyword.asar.namespace
-; Prefixes are treated as label references. I think it's okay.
+; Prefixes are treated as plain text with no highlight.
 
 namespace prefix
 namespace off
