@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>asm</string>
+	</array>
+	<key>name</key>
+	<string>65c816 Assembly</string>
+	<key>patterns</key>
+	<array>
+
+		<dict>
+			<key>comment</key>
+			<string>Stack Operations - Pushes</string>
+			<key>match</key>
+			<string>(?i)\s*\b(PHA|PHB|PHD|PHK|PHP|PHX|PHY)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.stack.push</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Stack Operations - Pulls</string>
+			<key>match</key>
+			<string>(?i)\s*\b(PLA|PLB|PLD|PLP|PLX|PLY)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.stack.pull</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Stack Operations - Values</string>
+			<key>match</key>
+			<string>(?i)\s*\b(PEA|PEI|PER)(\.w)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.stack.value</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+
+		
+
+		<dict>
+			<key>comment</key>
+			<string>65c816 Mnemonics Status</string>
+			<key>match</key>
+			<string>(?i)\s*\b(CLC|SEC)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.status.carry</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>65c816 Mnemonics Status</string>
+			<key>match</key>
+			<string>(?i)\s*\b(CLD|SED)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.status.decimal</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>65c816 Mnemonics Status</string>
+			<key>match</key>
+			<string>(?i)\s*\b(CLI|SEI)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.status.interrupt</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>65c816 Mnemonics Status</string>
+			<key>match</key>
+			<string>(?i)\s*\b(CLV)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.status.overflow</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>65c816 Mnemonics Status</string>
+			<key>match</key>
+			<string>(?i)\s*\b(REP|SEP)\b(?=\s+#)</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.status.repsep</string>
+		</dict>
+
+
+
+		
+		<dict>
+			<key>comment</key>
+			<string>Returns</string>
+			<key>match</key>
+			<string>(?i)\s*\b(RTI|RTS|RTL)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.return</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Breakpoints</string>
+			<key>match</key>
+			<string>(?i)\s*\b(WDM|BRK|COP|STP)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.breakpoint</string>
+		</dict>
+		
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Branches</string>
+			<key>match</key>
+			<string>(?i)\s*\b(BCC|BCS|BEQ|BMI|BNE|BPL|BRA|BRL|BVC|BVS)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.branch</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Jumps</string>
+			<key>match</key>
+			<string>(?i)\s*\b(JMP|JML|JSR|JSL)(\.b|\.w|\.l)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.jump</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>65c816's block move</string>
+			<key>match</key>
+			<string>(?i)\s*\b(MVN|MVP)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.block</string>
+		</dict>
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Bitwise operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(BIT|AND|ORA|EOR|ASL|LSR|ROL|ROR|TRB|TSB)(\.b|\.w|\.l)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.bitwise</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+
+
+		<dict>
+			<key>comment</key>
+			<string>Compare operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(CMP|CPX|CPY)(\.b|\.w|\.l)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.compare</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Math operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(ADC|SBC)(\.b|\.l.|\.w)?</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.math</string>
+			<key>captures</key>
+			<dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+
+
+		<dict>
+			<key>comment</key>
+			<string>Math operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(((INC|DEC)(\.b|\.l.|\.w)?(\s+(A|X|Y))?)|(DEX|DEY|INX|INY))\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.math.single</string>
+			<key>captures</key>
+			<dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>65c816's transfer operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(TAX|TAY|TCD|TCS|TDC|TSC|TSX|TXA|TXS|TXY|TYA|TYX)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.transfer</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>No operation</string>
+			<key>match</key>
+			<string>(?i)\s*\b(NOP)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.nop</string>
+		</dict>
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>65c816's wait for interrupt</string>
+			<key>match</key>
+			<string>(?i)\s*\b(WAI)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.wait</string>
+		</dict>
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Swapping operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(XBA|XCE)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.swap</string>
+		</dict>
+
+
+	
+		<dict>
+			<key>comment</key>
+			<string>Load operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(LDA|LDX|LDY)((\.b|\.w|\.l)\b)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.accum.load</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Store operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(STA|STX|STY|STZ)(\.b|\.w|\.l)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.accum.store</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+
+
+
+	</array>
+	<key>scopeName</key>
+	<string>source.asm.mnemonics</string>
+</dict>
+</plist>

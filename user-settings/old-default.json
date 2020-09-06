@@ -13,58 +13,58 @@
                 "name": "Asar strings",
                 "scope": ["string.asar"],
                 "settings": {
-                    "foreground": "#c5712d"
+                    "foreground": "#b3733f"
                     }
             },
 
 
             {
-                "name": "Mnemonics",
-                "scope": ["keyword.asar.mnemonics"],
+                "name": "65c816 Mnemonics",
+                "scope": ["keyword.asar.mnemonics.65c816"],
                 "settings": {
-                    "foreground": "#2da7ee"
+                    "foreground": "#25afff"
                     }
             },
             {
-                "name": "Mnemonics - Length",
-                "scope": ["keyword.asar.mnemonics.length"],
+                "name": "65c816 Mnemonics - Length",
+                "scope": ["keyword.asar.mnemonics.65c816.length"],
                 "settings": {
-                    "foreground": "#2d7aee"
+                    "foreground": "#567dff"
                     }
             },
             {
-                "name": "Mnemonics - Indexes",
+                "name": "65c816 Mnemonics - Status",
+                "scope": ["keyword.asar.mnemonics.65c816.return"],
+                "settings": {
+                    "foreground": "#bde96d"
+                    }
+            },
+            {
+                "name": "65c816 Mnemonics - Status (REP/SEP)",
+                "scope": ["keyword.asar.mnemonics.65c816.status.repsep"],
+                "settings": {
+                    "foreground": "#ca74fc"
+                    }
+            },
+            {
+                "name": "65c816 Mnemonics - Indexes",
                 "scope": ["keyword.asar.indexes"],
                 "settings": {
-                    "foreground": "#2d7aee"
+                    "foreground": "#567dff"
                     }
             },
             {
-                "name": "Mnemonics - Status",
-                "scope": ["keyword.asar.mnemonics.return"],
+                "name": "65c816 Mnemonics - Breakpoints",
+                "scope": ["keyword.asar.mnemonics.65c816.breakpoint"],
                 "settings": {
-                    "foreground": "#64f3f8"
+                    "foreground": "#fa4d4d"
                     }
             },
             {
-                "name": "Mnemonics - Status (REP/SEP)",
-                "scope": ["keyword.asar.mnemonics.status.repsep"],
+                "name": "65c816 Mnemonics - Stack operations",
+                "scope": ["keyword.asar.mnemonics.65c816.stack"],
                 "settings": {
-                    "foreground": "#8874fc"
-                    }
-            },
-            {
-                "name": "Mnemonics - Breakpoints",
-                "scope": ["keyword.asar.mnemonics.breakpoint"],
-                "settings": {
-                    "foreground": "#dd3b3b"
-                    }
-            },
-            {
-                "name": "Mnemonics - Stack operations",
-                "scope": ["keyword.asar.mnemonics.stack"],
-                "settings": {
-                    "foreground": "#13e664"
+                    "foreground": "#25db6b"
                     }
             },
 
@@ -72,24 +72,24 @@
 
             
             {
-                "name": "Asar hex constants & addresses",
-                "scope": ["constant.asar.numeric.hex"],
+                "name": "Asar constants",
+                "scope": ["constant.asar.numeric"],
                 "settings": {
-                    "foreground": "#53d5f5"
+                    "foreground": "#ffb617"
                     }
             },
             {
-                "name": "Asar decimal constants & addresses",
-                "scope": ["constant.asar.numeric.dec"],
+                "name": "Asar decimal constant",
+                "scope": ["constant.asar.numeric.decvalue"],
                 "settings": {
-                    "foreground": "#6b81fc"
+                    "foreground": "#6bc4ff"
                     }
             },
             {
-                "name": "Asar binary constants & addresses",
-                "scope": ["constant.asar.numeric.bin"],
+                "name": "Asar binary constant",
+                "scope": ["constant.asar.numeric.binvalue"],
                 "settings": {
-                    "foreground": "#17e685"
+                    "foreground": "#53fd44"
                     }
             },
 
@@ -97,10 +97,10 @@
 
 
             {
-                "name": "Asar binary data directives",
+                "name": "Asar binary directives",
                 "scope": "keyword.asar.binary",
                 "settings": {
-                    "foreground": "#74ee69",
+                    "foreground": "#25afff",
                     "fontStyle": "italic"
                 }
             },
@@ -108,31 +108,15 @@
                 "name": "Asar binary raw data",
                 "scope": "keyword.asar.binary.raw",
                 "settings": {
-                    "foreground": "#2da7ee",
+                    "foreground": "#25afff",
                     "fontStyle": ""
                 }
             },
             {
-                "name": "Asar binary include",
-                "scope": "keyword.asar.binary.incbin",
-                "settings": {
-                    "foreground": "#25afff",
-                    "fontStyle": "italic"
-                }
-            },
-            {
                 "name": "Asar include source",
-                "scope": "keyword.asar.include.incsrc",
+                "scope": "keyword.asar.include",
                 "settings": {
                     "foreground": "#25afff",
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "name": "Asar include source - Options",
-                "scope": "keyword.asar.include.options",
-                "settings": {
-                    "foreground": "#74ee69",
                     "fontStyle": "italic"
                 }
             },
@@ -140,84 +124,77 @@
 
             
             {
-                "name": "Asar labels",
                 "scope": "label.asar.label",
                 "settings": {
-                    "foreground": "#f1cb20",
+                    "foreground": "#e2afff",
                     "fontStyle": "bold"
                 }
             },
             {
-                "name": "Asar label references",
                 "scope": "label.asar.label.reference",
                 "settings": {
+                    "foreground": "#e2afff",
                     "fontStyle": "italic"
                 }
             },
             {
-                "name": "Asar sublabels",
                 "scope": "label.asar.sublabel",
                 "settings": {
-                    "foreground": "#dd9f4d",
+                    "foreground": "#8173ff",
                     "fontStyle": "bold"
                 }
             },
             {
-                "name": "Asar sublabel references",
                 "scope": "label.asar.sublabel.reference",
                 "settings": {
+                    "foreground": "#8173ff",
                     "fontStyle": "italic"
                 }
             },
 
 
 
-
-            
             {
-                "name": "Asar defines",
                 "scope": "keyword.asar.define",
                 "settings": {
-                    "foreground": "#b5e630"
+                    "foreground": "#e26ecf"
                 }
             },
             {
                 "name": "Asar assignment operators",
                 "scope": ["keyword.asar.operator.assignment"],
                 "settings": {
-                    "foreground": "#f1cb20"
+                    "foreground": "#c52764"
                     }
             },
 
 
 
-
+            
 
             {
                 "name": "Asar operators",
                 "scope": ["keyword.asar.operator"],
                 "settings": {
-                    "foreground": "#7895e2"
+                    "foreground": "#cfc1c8"
                     }
             },
             {
                 "name": "Asar brackets",
                 "scope": ["keyword.asar.operator.brackets"],
                 "settings": {
-                    "foreground": "#cfc1c8"
+                    "foreground": "#32faad"
                     }
             },
 
 
 
 
-
             
             {
-                "name": "Asar conditional statements",
                 "scope": "keyword.asar.conditionals",
                 "settings": {
-                    "foreground": "#6b81fc",
+                    "foreground": "#8e6eff",
                     "fontStyle": "italic"
                 }
             },
@@ -225,59 +202,45 @@
                 "name": "Asar logical operators",
                 "scope": ["keyword.asar.operator.logical"],
                 "settings": {
-                    "foreground": "#84b9ff",
+                    "foreground": "#8e6eff"
                     }
             },
 
 
 
-          
-            {
-                "name": "Asar repeat directive",
-                "scope": "keyword.asar.repeat",
-                "settings": {
-                    "foreground": "#6b81fc"
-                }
-            },
-            
             
 
 
             {
-                "name": "Asar macro directive",
                 "scope": "keyword.asar.macro",
                 "settings": {
-                    "foreground": "#74ee69"
+                    "foreground": "#25afff"
                 }
             },
             {
-                "name": "Asar macro directive - Name",
                 "scope": "keyword.asar.macro.name",
                 "settings": {
-                    "foreground": "#e7c941",
+                    "foreground": "#6fe793",
                     "fontStyle": "italic"
                 }
             },
             {
-                "name": "Asar macro call",
                 "scope": "keyword.asar.macro.call",
                 "settings": {
-                    "foreground": "#74ee69"
+                    "foreground": "#25afff"
                 }
             },
             {
-                "name": "Asar macro call - Name",
                 "scope": "keyword.asar.macro.call.name",
                 "settings": {
-                    "foreground": "#e7c941",
+                    "foreground": "#6fe793",
                     "fontStyle": "italic"
                 }
             },
             {
-                "name": "Asar macro argument usage",
                 "scope": "keyword.asar.macro.args.usage",
                 "settings": {
-                    "foreground": "#53d5f5",
+                    "foreground": "#bc69d1",
                     "fontStyle": "italic"
                 }
             },
@@ -285,26 +248,20 @@
 
 
 
-
-
             {
-                "name": "Asar structs",
                 "scope": "keyword.asar.struct",
                 "settings": {
-                    "foreground": "#74ee69"
+                    "foreground": "#25afff"
                 }
             },
 
 
 
 
-            
-
             {
-                "name": "Asar namespace directive",
                 "scope": "keyword.asar.namespace",
                 "settings": {
-                    "foreground": "#74ee69"
+                    "foreground": "#8a74db"
                 }
             },
 
@@ -312,88 +269,71 @@
 
             
             {
-                "name": "Asar print directive",
                 "scope": "keyword.asar.text",
                 "settings": {
-                    "foreground": "#74ee69",
+                    "foreground": "#d7f140",
                     "fontStyle": "italic bold"
                 }
             },
             {
-                "name": "Asar print directive - Functions",
                 "scope": "keyword.asar.text.functions",
                 "settings": {
-                    "foreground": "#e7c941",
+                    "foreground": "#40c757",
                     "fontStyle": "italic"
                 }
             },
             {
-                "name": "Asar print directive - Options",
                 "scope": "keyword.asar.text.options",
                 "settings": {
-                    "foreground": "#74ee69",
+                    "foreground": "#40c7c7",
                     "fontStyle": "italic"
                 }
             },
             {
-                "name": "Asar print directive - Errors",
                 "scope": "keyword.asar.text.error",
                 "settings": {
-                    "foreground": "#ff6464",
+                    "foreground": "#f8754d",
                     "fontStyle": "italic"
                 }
             },
             
 
-
-
             {
-                "name": "Asar functions",
                 "scope": "keyword.asar.functions",
                 "settings": {
-                    "foreground": "#e7c941",
+                    "foreground": "#cfe959",
                     "fontStyle": "italic"
                 }
             },
 
             
 
-
-
             {
-                "name": "Asar freespace directives",
                 "scope": "keyword.asar.freespace",
                 "settings": {
-                    "foreground": "#648dff",
-                    "fontStyle": "italic bold"
+                    "foreground": "#25ffc8",
+                    "fontStyle": "italic"
                 }
             },
 
             
-
-
-
             {
-                "name": "Asar program counter directives",
                 "scope": "keyword.asar.programcounter",
                 "settings": {
-                    "foreground": "#74ee69",
-                    "fontStyle": "bold"
+                    "foreground": "#4add76"
                 }
             },
 
 
 
             {
-                "name": "Asar ROM mapping directives",
                 "scope": "keyword.asar.mapping",
                 "settings": {
-                    "foreground": "#648dff",
+                    "foreground": "#f0ee6a",
                     "fontStyle": "italic bold"
                 }
             },
             {
-                "name": "Asar architecture directives",
                 "scope": "keyword.asar.arch",
                 "settings": {
                     "foreground": "#648dff",
@@ -401,23 +341,20 @@
                 }
             },
             {
-                "name": "Asar xkas compatibility directives",
                 "scope": "keyword.asar.compatibility",
                 "settings": {
-                    "foreground": "#74ee69",
+                    "foreground": "#7eff64",
                     "fontStyle": "italic"
                 }
             },
             {
-                "name": "Asar misc. checks directives",
                 "scope": "keyword.asar.checks",
                 "settings": {
-                    "foreground": "#74ee69",
+                    "foreground": "#ffe364",
                     "fontStyle": "italic"
                 }
             },
             {
-                "name": "Asar warnings directives",
                 "scope": "keyword.asar.warnings",
                 "settings": {
                     "foreground": "#ff6464",
