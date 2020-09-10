@@ -160,7 +160,7 @@
 			<key>comment</key>
 			<string>Bitwise operations</string>
 			<key>match</key>
-			<string>(?i)\s*\b(BIT|AND|ORA|EOR|ASL|LSR|ROL|ROR|TRB|TSB)(\.b|\.w|\.l)?\b</string>
+			<string>(?i)\s*\b(BIT|AND|ORA|EOR|TRB|TSB)(\.b|\.w|\.l)?\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.bitwise</string>
 			<key>captures</key>
@@ -172,6 +172,24 @@
 				</dict>
 			</dict>
 		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Bitwise operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b((ASL|LSR|ROL|ROR)(\.b|\.l.|\.w)?(\s+(A))?)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.bitwise</string>
+			<key>captures</key>
+			<dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+
 
 
 		<dict>
@@ -203,7 +221,7 @@
 			<string>keyword.asar.mnemonics.math</string>
 			<key>captures</key>
 			<dict>
-				<key>3</key>
+				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.asar.mnemonics.length</string>

@@ -703,7 +703,7 @@
 			<key>name</key>
 			<string>label.asar.sublabel.reference</string>
 			<key>match</key>
-			<string>(\s*\?*?[\.]+(?!\s*[0-9!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
+			<string>(\s*\?*?[\.]+(?!\s*[!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
 		</dict>
 
 
