@@ -5,7 +5,7 @@ Changes:
 * Defines and macro arguments are properly highlighted inside strings
 * Mnemonics no longer highlight text if said text is a label reference
 * Added a bunch of new scopes for 65c816 mnemonics. Check `highlight_test.asm`
-* `INC` and `DEC` no longer treat their argument as label references if it's a single A, X or Y letter
+* `INC`, `DEC`, `ASL`, `LSR`, `ROL` and `ROR` no longer treat their argument as label references if it's a single A, X or Y letter
 * Made possible to differentiate between values and addresses in most cases
 * Implemented the `rep` command
 
