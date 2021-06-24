@@ -172,6 +172,8 @@ $1F&8           ; AND
 !define := !define+%001
 !define #= !define+1
 
+label = $0000   ; Also supported on labels!
+
 ;################################################
 ;# LABELS & SUBLABELS
 
@@ -515,6 +517,8 @@ macro macro(a, b, c)            ; Macro with arguments
     sta.l <b>                   ; Macro arguments being used have a different scope
     stz.w (<a>+<c>)>>8
     bra ?macrolabel
+    db <a>+$00
+    db !define+<a>
     dw <b><<2+8, %0001
 ?macrolabel:                    ; Macro labes are supported as well, same scope as the regular labels
 endmacro
@@ -734,7 +738,7 @@ bank($F00000)
 ; Note that every function WILL be highlighted if it has a leading "_" in them 
 ; since user defined functions can replace the original functions.
 
-function read1(x) = _read1(x+$010000)
+function read1(z) = _read1(z+$010000)
 
 ;################################################
 ;# TEXT OUTPUT
@@ -910,8 +914,6 @@ check bankcross off
 
 ;################################################
 ;# WARNINGS
-
-; Barebones support
 
 ; Warnings
 ; Scope: keyword.asar.warnings
