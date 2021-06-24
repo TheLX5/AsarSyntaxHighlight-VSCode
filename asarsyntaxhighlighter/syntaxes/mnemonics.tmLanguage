@@ -11,6 +11,36 @@
 	<key>patterns</key>
 	<array>
 
+
+		<dict>
+			<key>comment</key>
+			<string>Letters</string>
+			<key>match</key>
+			<string>(?i)(,?(((\bYA)|(\bA)|(\+?X\b)|(\+Y\b)|(\(X\+?\))|(\(Y\))|(\bC)|(\bX)|(\bY)|(\bSP)|(\bP))(?=\(|\)|,|\s)))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.letters</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU Regs</string>
+			<key>match</key>
+			<string>(?i)\b(\(?R(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15)\)?)\b(?=\(|\)|,|\s)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.gsuregs</string>
+				</dict>
+			</dict>
+		</dict>
+
 		<dict>
 			<key>comment</key>
 			<string>Stack Operations - Pushes</string>
@@ -43,8 +73,17 @@
 				</dict>
 			</dict>
 		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Stack Operations - SPC700</string>
+			<key>match</key>
+			<string>(?i)\s*\b(POP|PUSH)\b\s+[APXY]\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.stack.spc700</string>
+		</dict>
 
-		
+
+
 
 		<dict>
 			<key>comment</key>
@@ -87,6 +126,14 @@
 			<string>keyword.asar.mnemonics.status.repsep</string>
 		</dict>
 
+		<dict>
+			<key>comment</key>
+			<string>SPC700 Mnemonics Status</string>
+			<key>match</key>
+			<string>(?i)\s*\b(SET[CP]|CLR[CPV]|NOTC)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.status.spc700</string>
+		</dict>
 
 
 		
@@ -94,9 +141,25 @@
 			<key>comment</key>
 			<string>Returns</string>
 			<key>match</key>
-			<string>(?i)\s*\b(RTI|RTS|RTL)\b</string>
+			<string>(?i)\s*\b(RTI|RTS|RTL|RET|RETI)\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.return</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Returns - Sleep</string>
+			<key>match</key>
+			<string>(?i)\s*\b(SLEEP)\b\s+</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.return.sleep</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Returns - Stop</string>
+			<key>match</key>
+			<string>(?i)\s*\b(STOP)\b\s+</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.return.stop</string>
 		</dict>
 
 
@@ -122,6 +185,22 @@
 			<key>name</key>
 			<string>keyword.asar.mnemonics.branch</string>
 		</dict>
+		<dict>
+			<key>comment</key>
+			<string>SPC700's Branches</string>
+			<key>match</key>
+			<string>(?i)\s*\b(BBC[0-7]|BBS[0-7]|CBNE|DBNZ)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.branch.spc700</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's Branches</string>
+			<key>match</key>
+			<string>(?i)\s*\b(BLT|BGE)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.branch.gsu</string>
+		</dict>
 
 
 
@@ -142,6 +221,16 @@
 				</dict>
 			</dict>
 		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's Jumps</string>
+			<key>match</key>
+			<string>(?i)\s*\b(LJMP)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.jump.gsu</string>
+		</dict>
+
+
 
 
 
@@ -153,6 +242,7 @@
 			<key>name</key>
 			<string>keyword.asar.mnemonics.block</string>
 		</dict>
+
 
 
 
@@ -172,16 +262,18 @@
 				</dict>
 			</dict>
 		</dict>
-
 		<dict>
 			<key>comment</key>
 			<string>Bitwise operations</string>
 			<key>match</key>
-			<string>(?i)\s*\b((ASL|LSR|ROL|ROR)(\.b|\.l.|\.w)?(\s+(A))?)\b</string>
-			<key>name</key>
-			<string>keyword.asar.mnemonics.bitwise</string>
+			<string>(?i)\s*\b((ASL|LSR|ROL|ROR)(\.b|\.l.|\.w)?)\b</string>
 			<key>captures</key>
 			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.bitwise</string>
+				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
@@ -189,6 +281,31 @@
 				</dict>
 			</dict>
 		</dict>
+		<dict>
+			<key>comment</key>
+			<string>SPC700's Bitwise operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(AND[0-7]*|OR[0-7]*|EOR[0-7]*|NOT[0-7]|CLR[0-7]|SET[0-7]|TCLR|TSET|XCN)(\.b|\.w|\.l)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.bitwise.spc700</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's Bitwise operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(BIC|XOR|ASR|NOT)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.bitwise.gsu</string>
+		</dict>
+
 
 
 
@@ -196,7 +313,7 @@
 			<key>comment</key>
 			<string>Compare operations</string>
 			<key>match</key>
-			<string>(?i)\s*\b(CMP|CPX|CPY)(\.b|\.w|\.l)?\b</string>
+			<string>(?i)\s*\b(CMPW?|CPX|CPY)(\.b|\.w|\.l)?\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.compare</string>
 			<key>captures</key>
@@ -212,11 +329,13 @@
 
 
 
+
+
 		<dict>
 			<key>comment</key>
 			<string>Math operations</string>
 			<key>match</key>
-			<string>(?i)\s*\b(ADC|SBC)(\.b|\.l.|\.w)?</string>
+			<string>(?i)\s*\b(ADC|SBC|ADDW|SUBW)(\.b|\.l.|\.w)?\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.math</string>
 			<key>captures</key>
@@ -228,13 +347,11 @@
 				</dict>
 			</dict>
 		</dict>
-
-
 		<dict>
 			<key>comment</key>
 			<string>Math operations</string>
 			<key>match</key>
-			<string>(?i)\s*\b(((INC|DEC)(\.b|\.l.|\.w)?(\s+(A|X|Y))?)|(DEX|DEY|INX|INY))\b</string>
+			<string>(?i)\s*\b(((INC|DEC)W?(\.b|\.l.|\.w)?)|(DEX|DEY|INX|INY))\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.math.single</string>
 			<key>captures</key>
@@ -246,6 +363,60 @@
 				</dict>
 			</dict>
 		</dict>
+		<dict>
+			<key>comment</key>
+			<string>SPC700's Math operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b((DIV)\s+(YA)\s*(,)\s*(X)|(MUL)|(DAA)|(DAS))\b</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.math.spc700</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.letters</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.operator</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.letters</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.math.spc700</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.math.spc700</string>
+				</dict>
+				<key>8</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.math.spc700</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's Math operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(ADD|SUB|(L|U|F)*MULT|DIV2)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.math.gsu</string>
+		</dict>
+
+
 
 
 
@@ -327,6 +498,174 @@
 					<string>keyword.asar.mnemonics.length</string>
 				</dict>
 			</dict>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>SPC700's Move</string>
+			<key>match</key>
+			<string>(?i)\s*\b(MOV([0-7]|W)?)(\.b|\.w|\.l)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.move.spc700</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.length</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's Move operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(MOVE(B|S|W)*)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.move.gsu</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>SPC700's Interrupts</string>
+			<key>match</key>
+			<string>(?i)\s*\b(DI|EI)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.interrupts.spc700</string>
+		</dict>
+
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>SPC700's Calls</string>
+			<key>match</key>
+			<string>(?i)\s*\b(TCALL\s+(0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15))\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.calls.spc700</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.mnemonics.letters</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>SPC700's Calls</string>
+			<key>match</key>
+			<string>(?i)\s*\b(CALL|PCALL)(\.b|\.w)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.calls.spc700</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>SPC700's Calls</string>
+			<key>match</key>
+			<string>(?i)\s*\b(CALL|PCALL)(\.b|\.w)?\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.calls.spc700</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>GSU's Reg operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(FROM|TO|WITH)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.gsu.regops</string>
+		</dict>
+
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>GSU's Loop opcode</string>
+			<key>match</key>
+			<string>(?i)\s*\b(LOOP)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.gsu.loop</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>GSU's Set Cache</string>
+			<key>match</key>
+			<string>(?i)\s*\b(CACHE)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.gsu.cache</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>GSU's bank related instructions</string>
+			<key>match</key>
+			<string>(?i)\s*\b(R(O|A)MB)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.gsu.bank</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>GSU's Set modes</string>
+			<key>match</key>
+			<string>(?i)\s*\b(ALT[1-3])\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.gsu.alt</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's Plotting instructions</string>
+			<key>match</key>
+			<string>(?i)\s*\b(PLOT|COLOR|RPIX|CMODE)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.gsu.plot</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's Regs bytes modifications</string>
+			<key>match</key>
+			<string>(?i)\s*\b(LOB|HIB|MERGE|SEX|SWAP)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.gsu.alt</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's write to Regs</string>
+			<key>match</key>
+			<string>(?i)\s*\b(IBT|IWT)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.gsu.regwrite</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's RAM operations</string>
+			<key>match</key>
+			<string>(?i)\s*\b(LD(B|W)|LMS*|SMS*|ST(B|W)|SBK|LEA|GET(B(H|L|S)*|C))\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.gsu.ram</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>GSU's Return address</string>
+			<key>match</key>
+			<string>(?i)\s*\b(LINK)\b</string>
+			<key>name</key>
+			<string>keyword.asar.mnemonics.return.gsu</string>
 		</dict>
 
 

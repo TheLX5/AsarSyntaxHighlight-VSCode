@@ -1,8 +1,8 @@
 {
 	"name": "asarsyntaxhighlighter",
 	"displayName": "AsarSyntaxHighlighter",
-	"description": "",
-	"version": "0.0.2",
+	"description": "Highlighter for Asar, a SNES assembler with support for 65c816, SPC700 and GSU mnemonics.",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.48.0"
 	},
@@ -17,9 +17,9 @@
 				"path": "./syntaxes/asar.tmLanguage"
 			},
 			{
-				"scopeName": "source.asm.mnemonics",
-				"path": "./syntaxes/mnemonics.tmLanguage"
-			},
+				"path": "./syntaxes/mnemonics.tmLanguage",
+				"scopeName": "source.asm.mnemonics"
+			}
 		],
 		"languages": [
 			{

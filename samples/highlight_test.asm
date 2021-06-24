@@ -1,5 +1,5 @@
 ;################################################
-;# Sample file for asar syntax highlight v0.1
+;# Sample file for asar syntax highlight v1.0
 ;# 
 ;# NOTES:
 ;# - Every mnemonic, directive and function is case-insensitive
@@ -16,6 +16,7 @@
 ; Values and addresses are constants, the only way to differentiate them is by
 ; checking if they're alone, after an asar directive or after any operator
 ; Every Address/Value test under the hexadecimal section applies to Decimal and Binary as well
+; SPC700 and GSU opcodes aren't guaranteed to work fine with this.
 
 ; Hex constants
 ; Scope: constant.asar.numeric.hex.value
@@ -179,22 +180,41 @@ $1F&8           ; AND
 
 label:          ; Label declaration
 
+?label:         ; Macro label declaration
+
+#label:         ; Label that doesn't mess up hierarchy
+#?label:        ; Same thing, but in a macro.
+                ; Also it's invalid and I don't care enough to make
+                ; the highlight not work on this case
+
 label           ; Invalid declaration.
-                ; It's treated as a reference.
 
 ; Sublabels
 ; Scope: label.asar.sublabel
 
 .sublabel       ; Sublabel declaration
 .sublabel:      ; Also accepts : at the end.
-                ; This one converts itself into a reference under special
-                ; circumstances.
+?.sublabel      ; And accepts macro sublabels
+#.sublabel      ; ... and those kind of sublabels
+#?.sublabel     ; Probably not a good idea to use this
 
+; Anonymous labels
+; Scope: label.asar.anonymous.forward
+; Scope: label.asar.anonymous.backward
+
++
+?+
+-
+?-
+++++++
+------
+?++
+?---
 
 ; Label references
 ; Scope: label.asar.label.reference
 
-lda label       ; This is a label reference, useful to spot labels without any issue.
+lda label       ; This is a label reference, to spot labels without any issue.
 jsl routine
 dw value
 lda #(label+4)>>8
@@ -207,15 +227,22 @@ jsr .subroutine
 dw .value
 lda #(.sublabel+4)>>8
 
-dl label,.sublabel, label,label, label
-dl .sublabel,label,.sublabel
+dl label,.sublabel
+dl .sublabel,label
 
-; Limitations
+; Anonymous label references
+; Scope: label.asar.anonymous.forward.reference
+; Scope: label.asar.anonymous.backward.reference
 
-; You can't concatenate commas and label references
-
-dl label,slabel     ; Bug
-dl label, slabel    ; Workaround
+bra +
+bra -
+bra ?+
+bra ?-
+lda +
+lda 1+1         ; doesn't break math
+lda label+3     ; not even with other label references
+lda +-1         ; this cursed setup also works
+db -+1          ; even the other way around
 
 ;################################################
 ;# 65c816 MNEMONICS
@@ -232,16 +259,15 @@ lda $000000
 lda ($00)
 lda [$00]
 
-; Mnemonic lenght and indexes are also supported for every opcode that supports them
+; Mnemonic length and indexes are also supported for every opcode that supports them
 
 ; Mnemonic length
-; Scope: keyword.asar.mnemonics.length
+; Scope: keyword.asar.mnemonics.65c816.length
 
 lda.b #%0001
 lda.w #$00
 lda.l 4823921
 lda.b !define
-lda.w #label+!define+.sublabel+$00
 
 ; Mnemonic index
 ; Scope: keyword.asar.indexes
@@ -255,6 +281,10 @@ lda ($00),y
 lda ($00,s),y
 lda ($00,x)
 lda [$00],y
+lda label,x
+lda .sublabel,y
+lda !define,s
+lda $00,sx          ; invalid
 
 ; 65c816's mnemonics
 ; Scope: keyword.asar.mnemonics.accum
@@ -345,12 +375,12 @@ BRK : COP : WDM : STP
 ;################################################
 ;# SPC700 MNEMONICS
 
-; work in progress
+; Check highlight_test_spc700.asm!
 
 ;################################################
 ;# SUPER FX/GSU MNEMONICS
 
-; work in progress
+; Check highlight_test_gsu.asm!
 
 ;################################################
 ;# CONDITIONALS
@@ -450,17 +480,30 @@ includeonce
 ;# MACROS
 
 
-; Macros
+; Macro declaration
 ; Scope: keyword.asar.macro
 
-; Macro's name
+; Macro declaration - Name
 ; Scope: keyword.asar.macro.name
 
-; Macro's end
+; Macro declaration - Argument list
+; Scope: keyword.asar.macro.argumentslist
+
+; Macro declaration - Variadic list
+; Scope: keyword.asar.macro.variadic
+
+; Macro declaration ending
 ; Scope: keyword.asar.macro.end
 
-; Macro's argument usage
+; Macro argument usage
 ; Scope: keyword.asar.macro.args.usage
+
+; Calling a macro
+; Scope: keyword.asar.macro.call
+
+; Called macro's name
+; Scope: keyword.asar.macro.call.name
+
 
 macro macro()                   ; Creating a macro
 endmacro                        ; Finishing a macro
@@ -474,10 +517,11 @@ macro macro(a, b, c)            ; Macro with arguments
     bra ?macrolabel
     dw <b><<2+8, %0001
 ?macrolabel:                    ; Macro labes are supported as well, same scope as the regular labels
-?macrolabel
 endmacro
 
 %macro($0000, label, !define)   ; Calling a macro with arguments will use their respective scopes
+
+macro macro(a, ...)             ; Variadic macros are also supported
 
 ; Some other valid macros
 
@@ -525,7 +569,6 @@ endstruct
 lda objectlist.posy.posx
 lda.w objectlist[0].posx.posy
 
-
 ;################################################
 ;# REPEAT
 
@@ -541,10 +584,19 @@ rep %10
 
 ; Namespaces
 ; Scope: keyword.asar.namespace
-; Prefixes are treated as plain text with no highlight.
+
+; Namespace's prefix
+; Scope: keyword.asar.namespace.name
 
 namespace prefix
 namespace off
+namespace               ; Requires a prefix or the "off" directive!
+
+; Global labels
+; Scope: keyword.asar.namespace.global
+
+global label:
+global #label:
 
 ;################################################
 ;# FUNCTIONS
@@ -653,6 +705,7 @@ defined(identifier)
 sizeof(identifier)
 objectsize(identifier)
 
+
 ; String related functions
 ; Scope: keyword.asar.functions.string
 
@@ -664,6 +717,16 @@ stringsequalnocase("yes", "perhaps")
 
 snestopc($018000)
 pctosnes(32768)
+
+; Data related functions
+; Scope: keyword.asar.functions.data
+
+datasize(label)
+
+bank(!define)
+bank(label)
+bank(123456)
+bank($F00000)
 
 ; Used defined functions
 ; Scope: keyword.asar.functions.user
@@ -800,6 +863,7 @@ exlorom
 exhirom
 sa1rom
 fullsa1rom
+sfxrom
 norom
 
 ;################################################
