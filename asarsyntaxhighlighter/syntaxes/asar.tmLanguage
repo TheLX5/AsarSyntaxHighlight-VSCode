@@ -93,7 +93,7 @@
 			<key>comment</key>
 			<string>Mnemonic Indexes</string>
 			<key>match</key>
-			<string>(?i)(?<=[^\s])\,(x|s|y)\b</string>
+			<string>(?i)(?<=[^\s]\,)(x|s|y)\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.indexes</string>
 		</dict>
@@ -343,6 +343,32 @@
 		</dict>
 		<dict>
 			<key>comment</key>
+			<string>Asar label, with operator</string>
+			<key>name</key>
+			<string>label.asar.label</string>
+			<key>match</key>
+			<string>(?i)^\s*(global\s+)*(\#)?\?*?([a-zA-Z0-9_]*)\s+((\?|\+|\:|\#)?=)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.namespace.global</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>label.asar.label.hierarchy</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.operator.assignment</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>comment</key>
 			<string>Asar sublabel</string>
 			<key>match</key>
 			<string>^[\s]*(\#)?\??[\.]+([a-zA-Z0-9_]*)(:)?</string>
@@ -376,6 +402,9 @@
 		</dict>
 
 
+		
+
+
 		<dict>
 			<key>comment</key>
 			<string>Asar operators</string>
@@ -384,13 +413,6 @@
 			<key>match</key>
 			<string>(,|#|\\)</string>
 		</dict>
-
-		<dict>
-			<key>include</key>
-			<string>source.asm.mnemonics</string>
-		</dict>
-		
-
 		<dict>
 			<key>comment</key>
 			<string>Asar bitwise operators</string>
@@ -440,6 +462,7 @@
 			<string>(?<!\s|\?)(\+|\-|\*|/|%)</string>
 		</dict>
 
+		
 
 
 
@@ -489,27 +512,19 @@
 		</dict>
 		<dict>
 			<key>comment</key>
+			<string>Asar bitwise functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(and|or|nand|nor|xor)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.bitwise</string>
+		</dict>
+		<dict>
+			<key>comment</key>
 			<string>Asar conditional functions</string>
 			<key>match</key>
 			<string>(?i)\s*_?(select|not|equal|notequal|less|lessequal|greater|greaterequal)(?=\()</string>
 			<key>name</key>
 			<string>keyword.asar.functions.conditional</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Asar bitwise functions</string>
-			<key>match</key>
-			<string>(?i)\s*_?(and|or|nand|nor|xor)(?=\()</string>
-			<key>name</key>
-			<string>keyword.asar.functions.bitwise</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Asar bitwise functions</string>
-			<key>match</key>
-			<string>(?i)\s*_?(and|or|nand|nor|xor)(?=\()</string>
-			<key>name</key>
-			<string>keyword.asar.functions.bitwise</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -561,6 +576,11 @@
 		</dict>
 
 
+
+		<dict>
+			<key>include</key>
+			<string>source.asm.mnemonics</string>
+		</dict>
 
 		
 

@@ -16,7 +16,7 @@
 			<key>comment</key>
 			<string>Letters</string>
 			<key>match</key>
-			<string>(?i)(,?(((\bYA)|(\bA)|(\+?X\b)|(\+Y\b)|(\(X\+?\))|(\(Y\))|(\bC)|(\bX)|(\bY)|(\bSP)|(\bP))(?=\(|\)|,|\s)))</string>
+			<string>(?i)(,?(((\bYA)|(\bA)|(\+?X\b)|(\+Y\b)|(X\+?)|(\bC)|(\bX)|(\bY)|(\bSP)|(\bP))(?=\(|\)|,|\s)))</string>
 			<key>captures</key>
 			<dict>
 				<key>2</key>
@@ -189,7 +189,7 @@
 			<key>comment</key>
 			<string>SPC700's Branches</string>
 			<key>match</key>
-			<string>(?i)\s*\b(BBC[0-7]|BBS[0-7]|CBNE|DBNZ)\b</string>
+			<string>(?i)\s*\b(BBC[0-7]*|BBS[0-7]*|CBNE|DBNZ)\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.branch.spc700</string>
 		</dict>

@@ -44,6 +44,8 @@
 - Namespaces prefixes are now properly captured, they also have their own child scope (`keyword.asar.namespace.name`)
 - Namespaces without a prefix or the directive "off" aren't captured in `keyword.asar.namespace`
 - Removed `label.asar.label.macro`. It was causing issues with macro sublabels
+- Label with operators are now properly captured in a scope
+- Commas are no longer captured in the `keyword.asar.mnemonics.indexes` scope.
 
 # Version 0.0.2
 Changes:
