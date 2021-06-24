@@ -33,7 +33,7 @@
   - `keyword.asar.mnemonics.gsu.alt`
   - `keyword.asar.mnemonics.gsu.cache`
   - `keyword.asar.mnemonics.gsu.loop`
-- Added support for the bank() function (`keyword.asar.functions.bank`)
+- Added support for the bank() and datasize() functions (`keyword.asar.functions.data`)
 - Added support for the global directive for labels in namespaces (`keyword.asar.namespace.global`)
 - Added support for the # prefix in label declarations (`label.asar.label.hierarchy`)
 - (Atari2.0) Added support for variadic macros (`keyword.asar.macro.variadic`)
