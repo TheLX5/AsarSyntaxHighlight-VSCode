@@ -1,3 +1,50 @@
+### Version 1.0.0
+- Fixed a limitation from label references being converted to indexes if they were right before a comma
+- Added support for anonymous labels:
+  - Forward anonymous label (`label.asar.anonymous.forward`)
+  - Forward anonymous label reference (`label.asar.anonymous.forward.reference`)
+  - Backward anonymous label (`label.asar.anonymous.backward`)
+  - Backward anonymous label reference (`label.asar.anonymous.backward.reference`)
+- Added support for spc700 mnemonics. Scopes:
+  - `keyword.asar.mnemonics.math.spc700`
+  - `keyword.asar.mnemonics.branch.spc700`
+  - `keyword.asar.mnemonics.bitwise.spc700`
+  - `keyword.asar.mnemonics.status.spc700`
+  - `keyword.asar.mnemonics.stack.spc700`
+  - `keyword.asar.mnemonics.calls.spc700`
+  - `keyword.asar.mnemonics.interrupts.spc700`
+  - `keyword.asar.mnemonics.move.spc700`
+  - `keyword.asar.mnemonics.return.stop`
+  - `keyword.asar.mnemonics.return.sleep`
+- Added support for GSU mnemonics. Scopes:
+  - `keyword.asar.mnemonics.math.gsu`
+  - `keyword.asar.mnemonics.bitwise.gsu`
+  - `keyword.asar.mnemonics.branch.gsu`
+  - `keyword.asar.mnemonics.move.gsu`
+  - `keyword.asar.mnemonics.jump.gsu`
+  - `keyword.asar.mnemonics.return.gsu`
+  - `keyword.asar.mnemonics.return.stop`
+  - `keyword.asar.mnemonics.gsu.regops`
+  - `keyword.asar.mnemonics.gsu.regwrite`
+  - `keyword.asar.mnemonics.gsu.ram`
+  - `keyword.asar.mnemonics.gsu.bytemod`
+  - `keyword.asar.mnemonics.gsu.plot`
+  - `keyword.asar.mnemonics.gsu.bank`
+  - `keyword.asar.mnemonics.gsu.alt`
+  - `keyword.asar.mnemonics.gsu.cache`
+  - `keyword.asar.mnemonics.gsu.loop`
+- Added support for the bank() function (`keyword.asar.functions.bank`)
+- Added support for the global directive for labels in namespaces (`keyword.asar.namespace.global`)
+- Added support for the # prefix in label declarations (`label.asar.label.hierarchy`)
+- (Atari2.0) Added support for variadic macros (`keyword.asar.macro.variadic`)
+- (Atari2.0) Macro arguments have their own scope (`keyword.asar.macro.argumentslist`)
+- The letters after certain opcodes such as `INC A` now have their own scope (`keyword.asar.mnemonics.letters`)
+- Warn ID from warnings enable/disable is now properly captured in a scope
+- Added sfxrom directive to `keyword.asar.mapping`
+- Namespaces prefixes are now properly captured, they also have their own child scope (`keyword.asar.namespace.name`)
+- Namespaces without a prefix or the directive "off" aren't captured in `keyword.asar.namespace`
+- Removed `label.asar.label.macro`. It was causing issues with macro sublabels
+
 ### Version 0.0.2
 Changes:
 * Macro calls and declarations have different scopes
