@@ -799,7 +799,7 @@
 			<key>name</key>
 			<string>label.asar.sublabel.reference</string>
 			<key>match</key>
-			<string>(\s*\?*?[\.]+(?!\s*[!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
+			<string>(?i)(\s*\?*?[\.]+(?!\s*[!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
 		</dict>
 
 
@@ -809,7 +809,7 @@
 			<key>name</key>
 			<string>label.asar.anonymous.forward.reference</string>
 			<key>match</key>
-			<string>(?i)\s+\??\++(?=(\n|;|\-))</string>
+			<string>(?i)\s+\??\++\s*?(?!(\n|;))</string>
 		</dict>
 
 		<dict>
@@ -818,7 +818,7 @@
 			<key>name</key>
 			<string>label.asar.anonymous.backward.reference</string>
 			<key>match</key>
-			<string>(?i)\s+\??\-+(?=(\n|;|\+))</string>
+			<string>(?i)\s+\??\-+\s*?(?!(\n|;))</string>
 		</dict>
 
 	</array>

@@ -5,8 +5,10 @@
 	"publisher": "lx5",
 	"icon": "asar.ico",
 	"description": "Highlighter for Asar, a SNES assembler with support for 65c816, SPC700 and GSU mnemonics.",
-	"version": "1.0.0",
-	"repository": {"url": "https://github.com/TheLX5/AsarSyntaxHighlight-VSCode"},
+	"version": "1.0.1",
+	"repository": {
+		"url": "https://github.com/TheLX5/AsarSyntaxHighlight-VSCode"
+	},
 	"engines": {
 		"vscode": "^1.48.0"
 	},
@@ -34,5 +36,10 @@
 				"configuration": "./language-configuration.json"
 			}
 		]
+	},
+	"__metadata": {
+		"id": "9ff61827-41ff-45a6-a58e-5cc8ae64cf1c",
+		"publisherDisplayName": "lx5",
+		"publisherId": "10036467-340a-4e96-aaf9-b289d21637e7"
 	}
 }

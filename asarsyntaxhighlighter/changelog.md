@@ -1,3 +1,8 @@
+# Version 1.0.1
+- Fixed an issue with opcode lengths not being captured in a scope in some math and bitwise mnemonics
+- Anonymous label references now work properly if there's any character after other than a `;` and a new line
+- `mov` and `movw` mnemonics now have their lengths captured in a different scope
+
 # Version 1.0.0
 - Fixed a limitation from label references being converted to indexes if they were right before a comma
 - Added support for anonymous labels:
@@ -44,8 +49,6 @@
 - Namespaces prefixes are now properly captured, they also have their own child scope (`keyword.asar.namespace.name`)
 - Namespaces without a prefix or the directive "off" aren't captured in `keyword.asar.namespace`
 - Removed `label.asar.label.macro`. It was causing issues with macro sublabels
-- Label with operators are now properly captured in a scope
-- Commas are no longer captured in the `keyword.asar.mnemonics.indexes` scope.
 
 # Version 0.0.2
 Changes:

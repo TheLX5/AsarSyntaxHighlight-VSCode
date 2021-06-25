@@ -266,7 +266,7 @@
 			<key>comment</key>
 			<string>Bitwise operations</string>
 			<key>match</key>
-			<string>(?i)\s*\b((ASL|LSR|ROL|ROR)(\.b|\.l.|\.w)?)\b</string>
+			<string>(?i)\s*\b((ASL|LSR|ROL|ROR)(\.b|\.l|\.w)?)\b</string>
 			<key>captures</key>
 			<dict>
 				<key>2</key>
@@ -335,7 +335,7 @@
 			<key>comment</key>
 			<string>Math operations</string>
 			<key>match</key>
-			<string>(?i)\s*\b(ADC|SBC|ADDW|SUBW)(\.b|\.l.|\.w)?\b</string>
+			<string>(?i)\s*\b(ADC|SBC|ADDW|SUBW)(\.b|\.l|\.w)?\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.math</string>
 			<key>captures</key>
@@ -351,7 +351,7 @@
 			<key>comment</key>
 			<string>Math operations</string>
 			<key>match</key>
-			<string>(?i)\s*\b(((INC|DEC)W?(\.b|\.l.|\.w)?)|(DEX|DEY|INX|INY))\b</string>
+			<string>(?i)\s*\b(((INC|DEC)W?(\.b|\.l|\.w)?)|(DEX|DEY|INX|INY))\b</string>
 			<key>name</key>
 			<string>keyword.asar.mnemonics.math.single</string>
 			<key>captures</key>
@@ -512,7 +512,7 @@
 			<string>keyword.asar.mnemonics.move.spc700</string>
 			<key>captures</key>
 			<dict>
-				<key>2</key>
+				<key>3</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.asar.mnemonics.length</string>
