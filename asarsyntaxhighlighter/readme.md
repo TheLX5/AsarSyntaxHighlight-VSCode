@@ -2,7 +2,7 @@
 
 Official GitHub Repo: https://github.com/TheLX5/AsarSyntaxHighlight-VSCode
 
-The best syntax highlighter for [Asar](https://github.com/RPGHacker/asar) projects.
+The best syntax highlighter for [Asar](https://github.com/RPGHacker/asar) projects in VS Code.
 
 ## Features
 - Support for every function and directives in Asar 1.81

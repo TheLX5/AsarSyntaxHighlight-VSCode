@@ -1,5 +1,5 @@
 # AsarSyntaxHighlight-VSCode
-Asar syntax highlight for Visual Studio Code
+The best syntax highlighter for [Asar](https://github.com/RPGHacker/asar) projects in VS Code.
 
 ## Features
 - Support for every function and directives in Asar 1.81
