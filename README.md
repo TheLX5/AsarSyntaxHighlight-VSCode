@@ -2,18 +2,10 @@
 Asar syntax highlight for Visual Studio Code
 
 ## Features
-- Support for most functions and directives in asar 1.71+
-- Support for 65c816 mnemonics
-- Smarter than the current options at the extensions marketplace
+- Support for every function and directives in Asar 1.81
+- Support for 65c816, SPC700 and GSU/Super FX mnemonics
 - Custom scopes for literally everything supported
-
-## Installation
-- Copy the `asarsyntaxhighlighter` folder to your `extensions` folder for VSCode
-- (Optional) Copy the contents of any of the `.json` files in `user-settings` to your `settings.json` file.
-
-`extensions` folder path in Windows: `%USERPROFILE%\.vscode\extensions`
-
-`settings.json` path in Windows: `%APPDATA%\Code\User\settings.json`
+- (Hopefully) smarter than the current options at the extensions marketplace
 
 ## Previews
 Check the `samples` folder contents for some live previews of the highlighter.
