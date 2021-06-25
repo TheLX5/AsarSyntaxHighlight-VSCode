@@ -1,3 +1,6 @@
+# Version 1.0.2
+- Fixed macro labels not being captured in a scope if they're missing : at the end
+
 # Version 1.0.1
 - Fixed an issue with opcode lengths not being captured in a scope in some math and bitwise mnemonics
 - Anonymous label references now work properly if there's any character after other than a `;` and a new line
