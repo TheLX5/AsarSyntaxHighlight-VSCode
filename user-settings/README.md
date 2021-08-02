@@ -1,6 +1,9 @@
 # Color settings for the highlight
 In this folder you can find different color settings based on other's preferences.
 
+## How to use
+Place them in `settings.json` in `%APPDATA%\Code\User`. If there's no `settings.json` file, create one.
+
 ## How to contribute
 Open an Issue or a Pull Request with your `.json` file and an optional preview image and I'll be glad to add it here.
 
