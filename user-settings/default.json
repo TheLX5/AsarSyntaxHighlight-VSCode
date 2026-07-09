@@ -392,6 +392,14 @@
                     "fontStyle": "italic"
                 }
             },
+            {
+                "name": "Asar macro variadic argument usage",
+                "scope": "keyword.asar.macro.args.usage.variadic",
+                "settings": {
+                    "foreground": "#45b397",
+                    "fontStyle": "italic"
+                }
+            },
 
 
 
@@ -401,6 +409,14 @@
             {
                 "name": "Asar structs",
                 "scope": "keyword.asar.struct",
+                "settings": {
+                    "foreground": "#dd726b"
+                }
+            },
+
+            {
+                "name": "Asar SPC blocks",
+                "scope": "keyword.asar.spcblock",
                 "settings": {
                     "foreground": "#dd726b"
                 }

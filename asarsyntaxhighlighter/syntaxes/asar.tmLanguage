@@ -128,8 +128,21 @@
 			<string>Asar macro arguments</string>
 			<key>name</key>
 			<string>keyword.asar.macro.args.usage</string>
-			<key>match</key>
-			<string><[a-zA-Z_0-9]+></string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.macro.args.usage</string>
+					<key>match</key>
+					<string><[a-zA-Z_0-9]+></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.macro.args.usage.variadic</string>
+					<key>match</key>
+					<string><\.{3}(\[\S+\])?></string>
+				</dict>
+			</array>
 		</dict>
 
 
@@ -552,11 +565,27 @@
 		</dict>
 		<dict>
 			<key>comment</key>
+			<string>Asar macro functions</string>
+			<key>match</key>
+			<string>(?i)\s*(sizeof)(?=\(\.{3}\))</string>
+			<key>name</key>
+			<string>keyword.asar.functions.macro</string>
+		</dict>
+		<dict>
+			<key>comment</key>
 			<string>Asar string functions</string>
 			<key>match</key>
 			<string>(?i)\s*_?(stringsequal|stringsequalnocase)(?=\()</string>
 			<key>name</key>
 			<string>keyword.asar.functions.string</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar address functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(pc|realbase)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.address</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -603,7 +632,7 @@
 			<key>comment</key>
 			<string>Asar architecture directives</string>
 			<key>match</key>
-			<string>(?i)\s*\b(arch)\b[\s]+\b(65816|spc700\-inline|spc700|superfx)</string>
+			<string>(?i)\s*\b(arch)\b[\s]+\b(65816|spc700|superfx)$</string>
 			<key>name</key>
 			<string>keyword.asar.arch</string>
 		</dict>
@@ -626,7 +655,7 @@
 			<key>comment</key>
 			<string>Asar warning directives</string>
 			<key>match</key>
-			<string>(?i)\s*\b(warnings\s+(push|pull|((enable|disable)\b\s+[W|w][0-9]+)))\b\s*</string>
+			<string>\s*\b(warnings\s+(push|pull|((enable|disable)\b\s+W\w+)))\b\s*</string>
 			<key>name</key>
 			<string>keyword.asar.warnings</string>
 		</dict>
@@ -638,7 +667,7 @@
 			<key>comment</key>
 			<string>Asar compatibility directives</string>
 			<key>match</key>
-			<string>(?i)\s*\b(warn\s+xkas\s+(on|off)|math\s+pri\s+(on|off)|math\s+round\s+(on|off)|namespace\s+nested\s+(on|off))\b\s*</string>
+			<string>(?i)\s*\b(warn\s+xkas\s+(on|off)|math\s+pri\s+(on|off)|math\s+round\s+(on|off)|namespace\s+nested\s+(on|off)|asar\s([\d\.]+))\b\s*</string>
 			<key>name</key>
 			<string>keyword.asar.compatibility</string>
 		</dict>
@@ -687,7 +716,7 @@
 			<key>comment</key>
 			<string>Asar freespace directives</string>
 			<key>match</key>
-			<string>(?i)\s*\b(freecode|freedata|freespace\b\s+(ram|noram)?)\b\s*((\,*\s*(align|cleaned|static)\s*)+)?</string>
+			<string>(?i)\s*\b(freespacebyte|freecode|freedata|freespace\b\s+(ram|noram)?)\b\s*((\,*\s*(align|cleaned|static)\s*)+)?</string>
 			<key>name</key>
 			<string>keyword.asar.freespace</string>
 		</dict>
@@ -708,7 +737,7 @@
 			<key>comment</key>
 			<string>Asar check directives</string>
 			<key>match</key>
-			<string>(?i)\s*\b(check\s+(title|bankcross\s+(on|off)))\b\s*</string>
+			<string>(?i)\s*\b(check\s+(title|bankcross\s+(full|half|off)))\b\s*</string>
 			<key>name</key>
 			<string>keyword.asar.checks</string>
 		</dict>
@@ -749,6 +778,14 @@
 				</dict>
 			</dict>
 		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar extra namespace directives</string>
+			<key>match</key>
+			<string>(?i)\s*\b(pushns|pullns)\b\s*</string>
+			<key>name</key>
+			<string>keyword.asar.namespace</string>
+		</dict>
 
 
 
@@ -757,7 +794,7 @@
 			<key>comment</key>
 			<string>Asar conditional function</string>
 			<key>match</key>
-			<string>(?i)\s*\b(if|while|else|elseif)\b\s*</string>
+			<string>(?i)\s*\b(if|while|for|else|elseif)\b\s*</string>
 			<key>name</key>
 			<string>keyword.asar.conditionals</string>
 		</dict>
@@ -765,9 +802,9 @@
 			<key>comment</key>
 			<string>Asar end conditional function</string>
 			<key>match</key>
-			<string>(?i)\s*\b(endif)\b\s*</string>
+			<string>(?i)\s*\b(endif|endwhile|endfor)\b\s*</string>
 			<key>name</key>
-			<string>keyword.asar.conditionals.endif</string>
+			<string>keyword.asar.conditionals.end</string>
 		</dict>
 
 
@@ -779,6 +816,25 @@
 			<string>keyword.asar.repeat</string>
 			<key>match</key>
 			<string>(?i)(\s*\b(rep)\b\s+)</string>
+		</dict>
+
+
+
+		<dict>
+			<key>comment</key>
+			<string>Asar inline SPC block</string>
+			<key>name</key>
+			<string>keyword.asar.spcblock</string>
+			<key>match</key>
+			<string>(?i)(\s*\b(spcblock)\b\s+)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar inline SPC block ending</string>
+			<key>name</key>
+			<string>keyword.asar.spcblock.end</string>
+			<key>match</key>
+			<string>(?i)^\s*(endspcblock)\b\s*</string>
 		</dict>
 
 

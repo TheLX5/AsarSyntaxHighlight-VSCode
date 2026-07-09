@@ -387,7 +387,7 @@ BRK : COP : WDM : STP
 ;################################################
 ;# CONDITIONALS
 
-; IF/WHILE/ELSE/ELSEIF conditionals
+; IF/WHILE/FOR/ELSE/ELSEIF conditionals
 ; Scope: keyword.asar.conditionals
 
 ; if, elseif, else and endif tests
@@ -406,7 +406,16 @@ endif
 while !i < 10
     lda.b #!i
     sta $00,x
-endif
+endwhile
+
+; for test
+
+for i = 1..5
+    lda.b #!i
+    sta $00+!i
+endfor
+
+for i = 0..10 : NOP : endfor
 
 ;################################################
 ;# BINARY DATA
@@ -439,6 +448,8 @@ fillword $DEAD
 filllong $0D9040 
 filldword $DEADBEEF
 fill 4
+fill align 8 offset 2
+fill align $08 offset $02
 
 ; Pad area with bytes
 ; Scope: keyword.asar.binary.pad
@@ -456,6 +467,7 @@ pad $01A005
 
 incbin "file.bin"
 incbin "file.bin":9-12
+incbin "file.bin":$9..$F
 
 ; Incbin operator
 ; Scope: keyword.asar.operator.incbin
@@ -526,6 +538,8 @@ endmacro
 %macro($0000, label, !define)   ; Calling a macro with arguments will use their respective scopes
 
 macro macro(a, ...)             ; Variadic macros are also supported
+	db sizeof(...), <...>, <...[0]>, <...[!i]>
+endmacro
 
 ; Some other valid macros
 
@@ -584,6 +598,18 @@ rep $10
 rep %10
 
 ;################################################
+;# SPCBLOCK
+
+; spcblock command
+; Scope: keyword.asar.spcblock
+
+spcblock $6000 nspc
+    db $00,$01,$02
+    exec_start:
+    mov $33,#$44
+endspcblock execute exec_start
+
+;################################################
 ;# NAMESPACES
 
 ; Namespaces
@@ -595,6 +621,9 @@ rep %10
 namespace prefix
 namespace off
 namespace               ; Requires a prefix or the "off" directive!
+
+pushns
+pullns
 
 ; Global labels
 ; Scope: keyword.asar.namespace.global
@@ -716,6 +745,12 @@ objectsize(identifier)
 stringsequal("yes", "no")
 stringsequalnocase("yes", "perhaps")	
 
+; Address related functions
+; Scope: keyword.asar.functions.address
+
+pc()
+realbase()
+
 ; Address conversion functions
 ; Scope: keyword.asar.functions.convert
 
@@ -780,6 +815,7 @@ error "string"
 
 assert 
 assert !define == $23, "string"
+assert pc() <= $008123
 
 ;################################################
 ;# FREESPACE
@@ -795,8 +831,9 @@ freespace ram
 freespace noram, ram            ; Only one of these are supported at the same time
 freecode cleaned, static
 freedata align
-freedata $00                    ; Values are supported
+freedata $00                    ; Values are supported, but deprecated in favour of freespacebyte
 freedata cleaned, $00
+freespacebyte $00
 
 ; autoclean/prot directives
 ; Scope: keyword.asar.freespace.misc
@@ -831,6 +868,9 @@ base off
 base !ram_define
 skip 
 skip 12
+skip align 16
+skip align 16 offset 5
+skip align $20 offset $17
 warnpc
 warnpc 1
 warnpc $008000
@@ -878,10 +918,10 @@ norom
 
 arch 65816
 arch spc700
-arch spc700-inline
+arch spc700-inline          ; Invalid
 arch superfx
 
-arch spc700-inli            ; Incomplete, doesn't work
+arch spc70                  ; Incomplete, doesn't work
 arch                        ; Must specify an architecture in order to work
 
 ;################################################
@@ -901,6 +941,7 @@ namespace nested off
 
 ;@xkas                      ; No special highlight
 @asar                       ; Highlight doesn't work
+asar 1.91
 
 ;################################################
 ;# CHECKS
@@ -909,8 +950,10 @@ namespace nested off
 ; Scope: keyword.asar.checks
 
 check title "string"
-check bankcross on
+check bankcross on          ; Invalid
 check bankcross off
+check bankcross half
+check bankcross full
 
 ;################################################
 ;# WARNINGS
@@ -922,6 +965,6 @@ warnings push
 warnings pull 
 warnings                    ; Invalid
 
-warnings enable W1012
-warnings disable W1012
-warnings enable 1012        ; Invalid
+warnings enable Wfreespace_leaked
+warnings disable Wfreespace_leaked
+warnings enable freespace_leaked ; Invalid

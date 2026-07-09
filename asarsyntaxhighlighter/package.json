@@ -5,7 +5,7 @@
 	"publisher": "lx5",
 	"icon": "asar.ico",
 	"description": "Syntax highlighter for Asar, a SNES assembler with support for 65c816, SPC700 and GSU mnemonics.",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"repository": {
 		"url": "https://github.com/TheLX5/AsarSyntaxHighlight-VSCode"
 	},

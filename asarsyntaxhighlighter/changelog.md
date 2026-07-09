@@ -1,3 +1,6 @@
+# Version 1.0.3
+- Now supports asar 1.91
+
 # Version 1.0.2
 - Fixed macro labels not being captured in a scope if they're missing : at the end
 
