@@ -116,7 +116,7 @@
 			<key>begin</key>
 			<string>![a-zA-Z0-9_{}]+</string>
 			<key>end</key>
-			<string>(?=[ \t,;\r\n()]|$)</string>
+			<string>(?=[ \t,;\r\n()+-/%*&<>|^=:?#]|$)</string>
 			<key>patterns</key>
 			<array>
 				<dict>

@@ -109,6 +109,13 @@ $FE*%01         ; Multiplication
 64%$10          ; Modulo
 2**8            ; Exponential
 
+; Also supports mixing with defines and labels
+
+db !define+$10
+dw label-20
+dl label|(!define+$20)
+dd !define*!a&label
+
 ; Bitwise operators
 ; Scope: keyword.asar.operator.bitwise
 
