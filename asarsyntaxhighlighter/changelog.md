@@ -1,3 +1,9 @@
+# Version 1.0.6
+- Include changelog for version 1.0.5 (lol)
+
+# Version 1.0.5
+- Fixed math being considered a define when placed after to a define
+
 # Version 1.0.4
 - Base 10 numbers now properly support decimal parts
 - Label definitions and defines are properly colored when macro arguments are used inside them
