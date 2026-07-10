@@ -1,3 +1,12 @@
+# Version 1.0.4
+- Base 10 numbers now properly support decimal parts
+- Label definitions and defines are properly colored when macro arguments are used inside them
+- Added missing support for:
+  - `undef` (Same scope as `defined`)
+  - SPC block engines
+  - SPC Block execute keyword
+- Default coloring altered slightly
+
 # Version 1.0.3
 - Now supports asar 1.91
 

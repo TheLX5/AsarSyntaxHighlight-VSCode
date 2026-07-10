@@ -83,7 +83,7 @@
                 "name": "Mnemonics - Opcode length",
                 "scope": ["keyword.asar.mnemonics.length"],
                 "settings": {
-                    "foreground": "#43e3ff"
+                    "foreground": "#1a83e6"
                     }
             },
             {
@@ -164,14 +164,14 @@
                 "name": "Asar decimal constants & addresses",
                 "scope": ["constant.asar.numeric.dec"],
                 "settings": {
-                    "foreground": "#3172ff"
+                    "foreground": "#2f9ce6"
                     }
             },
             {
                 "name": "Asar binary constants & addresses",
                 "scope": ["constant.asar.numeric.bin"],
                 "settings": {
-                    "foreground": "#5dff65"
+                    "foreground": "#64ffaa"
                     }
             },
 

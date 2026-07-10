@@ -67,7 +67,7 @@
 			<key>name</key>
 			<string>constant.asar.numeric.dec.value</string>
 			<key>match</key>
-			<string>\b[0-9]+\b</string>
+			<string>\b[0-9]+(?:\.[0-9]+)?\b</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -108,20 +108,35 @@
 		</dict>
 
 
-
-
 		<dict>
 			<key>comment</key>
 			<string>asar Defines</string>
 			<key>name</key>
 			<string>keyword.asar.define</string>
-			<key>match</key>
+			<key>begin</key>
 			<string>![a-zA-Z0-9_{}]+</string>
+			<key>end</key>
+			<string>(?=[ \t,;\r\n()]|$)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.macro.args.usage</string>
+					<key>match</key>
+					<string><[a-zA-Z_0-9]+></string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>keyword.asar.macro.args.usage.variadic</string>
+					<key>match</key>
+					<string><\.{3}(\[\S+\])?></string>
+				</dict>
+			</array>
 		</dict>
 
 
 
-		
+
 
 		<dict>
 			<key>comment</key>
@@ -144,7 +159,6 @@
 				</dict>
 			</array>
 		</dict>
-
 
 
 
@@ -266,6 +280,7 @@
 
 
 
+
 		<dict>
 			<key>comment</key>
 			<string>Asar binary raw data</string>
@@ -274,14 +289,14 @@
 			<key>match</key>
 			<string>(?i)(\s*(db|dw|dl|dd)\b)</string>
 		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Asar fill binary data</string>
-			<key>name</key>
-			<string>keyword.asar.binary.fill</string>
-			<key>match</key>
-			<string>(?i)(\s*(fillbyte|fillword|filllong|filldword|fill)\s+)</string>
-		</dict>
+        <dict>
+            <key>comment</key>
+            <string>Asar fill binary data</string>
+            <key>name</key>
+            <string>keyword.asar.binary.fill</string>
+            <key>match</key>
+            <string>(?i)(\s*(fillbyte|fillword|filllong|filldword|fill|align|offset)\s+)</string>
+        </dict>
 		<dict>
 			<key>comment</key>
 			<string>Asar pad binary data</string>
@@ -330,56 +345,113 @@
 		</dict>
 
 
-
-
-
 		<dict>
-			<key>comment</key>
-			<string>Asar label</string>
-			<key>name</key>
-			<string>label.asar.label</string>
-			<key>match</key>
-			<string>(?i)^\s*(global\s+)*(\#)?(\?\w+:?|\w+:)</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.asar.namespace.global</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>label.asar.label.hierarchy</string>
-				</dict>
-			</dict>
-		</dict>
+            <key>comment</key>
+            <string>Asar label definition</string>
+            <key>name</key>
+            <string>meta.label.asar</string>
+            <key>begin</key>
+            <string>(?i)^\s*(global\s+)?(#)?(?=\??\w+(?:<[^>]+>)?\w*:)</string>
+            <key>beginCaptures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.asar.namespace.global</string>
+                </dict>
+                <key>2</key>
+                <dict>
+                    <key>name</key>
+                    <string>label.asar.label.hierarchy</string>
+                </dict>
+            </dict>
+            <key>end</key>
+            <string>:</string>
+            <key>endCaptures</key>
+            <dict>
+                <key>0</key>
+                <dict>
+                    <key>name</key>
+                    <string>label.asar.label.delimiter</string>
+                </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.asar.macro.args.usage</string>
+                    <key>match</key>
+                    <string><[a-zA-Z_0-9]+></string>
+                </dict>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.asar.macro.args.usage.variadic</string>
+                    <key>match</key>
+                    <string><\.{3}(\[\S+\])?></string>
+                </dict>
+                <dict>
+                    <key>name</key>
+                    <string>label.asar.label</string>
+                    <key>match</key>
+                    <string>\??\w+</string>
+                </dict>
+            </array>
+        </dict>
 		<dict>
-			<key>comment</key>
-			<string>Asar label, with operator</string>
-			<key>name</key>
-			<string>label.asar.label</string>
-			<key>match</key>
-			<string>(?i)^\s*(global\s+)*(\#)?\?*?([a-zA-Z0-9_]*)\s+((\?|\+|\:|\#)?=)</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.asar.namespace.global</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>label.asar.label.hierarchy</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.asar.operator.assignment</string>
-				</dict>
-			</dict>
-		</dict>
+            <key>comment</key>
+            <string>Asar label, with operator</string>
+            <key>name</key>
+            <string>meta.label.assignment.asar</string>
+            <key>begin</key>
+            <string>(?i)^\s*(global\s+)?(#)?(?=\??\w+(?:<[^>]+>)?\w*\s*[?+:#]?=)</string>
+            <key>beginCaptures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.asar.namespace.global</string>
+                </dict>
+                <key>2</key>
+                <dict>
+                    <key>name</key>
+                    <string>label.asar.label.hierarchy</string>
+                </dict>
+            </dict>
+            <key>end</key>
+            <string>(([?+:#])?=)</string>
+            <key>endCaptures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.asar.operator.assignment</string>
+                </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.asar.macro.args.usage</string>
+                    <key>match</key>
+                    <string><[a-zA-Z_0-9]+></string>
+                </dict>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.asar.macro.args.usage.variadic</string>
+                    <key>match</key>
+                    <string><\.{3}(\[\S+\])?></string>
+                </dict>
+                <dict>
+                    <key>name</key>
+                    <string>label.asar.label</string>
+                    <key>match</key>
+                    <string>\??\w+</string>
+                </dict>
+            </array>
+        </dict>
+
+
+
 		<dict>
 			<key>comment</key>
 			<string>Asar sublabel</string>
@@ -552,6 +624,14 @@
 			<string>Asar define functions</string>
 			<key>match</key>
 			<string>(?i)\s*_?(defined)(?=\()</string>
+			<key>name</key>
+			<string>keyword.asar.functions.define</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Asar undefine functions</string>
+			<key>match</key>
+			<string>(?i)\s*_?(undef)\s</string>
 			<key>name</key>
 			<string>keyword.asar.functions.define</string>
 		</dict>
@@ -830,11 +910,19 @@
 		</dict>
 		<dict>
 			<key>comment</key>
+			<string>Asar inline SPC block engine</string>
+			<key>name</key>
+			<string>keyword.asar.spcblock.engine</string>
+			<key>match</key>
+			<string>(?i)(\s+\b(nspc)\b\s+)</string>
+		</dict>
+		<dict>
+			<key>comment</key>
 			<string>Asar inline SPC block ending</string>
 			<key>name</key>
 			<string>keyword.asar.spcblock.end</string>
 			<key>match</key>
-			<string>(?i)^\s*(endspcblock)\b\s*</string>
+			<string>(?i)^\s*(endspcblock)\b\s+(execute\b)?\s*</string>
 		</dict>
 
 
@@ -845,7 +933,7 @@
 			<key>name</key>
 			<string>label.asar.label.reference</string>
 			<key>match</key>
-			<string>(?i)(?<=\s*(((LDA|LDX|LDY|STA|STX|STY|STZ|ADC|SBC|CMP|CPX|CPY|BIT|BRA|BRL|BEQ|BNE|BCS|BCC|BMI|BPL|BVC|BVS|AND|ORA|EOR|ROL|ROR|TSB|TRB|MVN|MVP|JSR|JMP|JSL|JML|PEA|PEI|PER|BLT|BGE|PCALL|CALL|MOV[0-7]|MOV|INCW|DECW|TSET|TCLR|NOT[0-7]|SET[0-7]|CLR[0-7]|OR|BBC[0-7]|BBS[0-7]|CBNE|DBNZ)(\.b|\.l.|\.w)?)|(INC|DEC|ASL|LSR)((\.b|\.l.|\.w)|(\s+(A|X|Y)\b))?|db|dw|dl|dd|if|elseif|while|autoclean|prot|org|base|skip|warnpc|bank|dpbase|struct|extends|[,#=!<>&|\\/+\-*/()\[\]])\s*)(\?*?(?!\s*[0-9!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
+			<string>(?i)(?<=\s*(((LDA|LDX|LDY|STA|STX|STY|STZ|ADC|SBC|CMP|CPX|CPY|BIT|BRA|BRL|BEQ|BNE|BCS|BCC|BMI|BPL|BVC|BVS|AND|ORA|EOR|ROL|ROR|TSB|TRB|MVN|MVP|JSR|JMP|JSL|JML|PEA|PEI|PER|BLT|BGE|PCALL|CALL|MOV[0-7]|MOV|INCW|DECW|TSET|TCLR|NOT[0-7]|SET[0-7]|CLR[0-7]|OR|BBC[0-7]|BBS[0-7]|CBNE|DBNZ)(\.b|\.l.|\.w)?)|(INC|DEC|ASL|LSR)((\.b|\.l.|\.w)|(\s+(A|X|Y)\b))?|db|dw|dl|dd|if|elseif|while|autoclean|prot|org|base|skip|warnpc|bank|dpbase|struct|extends|execute|[,#=!<>&|\\/+\-*/()\[\]])\s*)(\?*?(?!\s*[0-9!%.$<>])[a-zA-Z_0-9][a-zA-Z_0-9]*\s*)(?!(\n|;))</string>
 		</dict>
 
 
